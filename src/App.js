@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
+import { QueryClient, QueryClientProvider } from "react-query";
+import MainContent from "./components/MainContent/index.js";
+import Filter from "./components/Filter";
+
+// Create a client
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <CssBaseline />
+        <Container maxWidth="lg">
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={3}>
+              <Grid item xs={8}>
+                <MainContent />
+              </Grid>
+              <Grid item xs={4}>
+                <Filter />
+              </Grid>
+            </Grid>
+          </Box>
+        </Container>
+      </div>
+    </QueryClientProvider>
   );
 }
 
