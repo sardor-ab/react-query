@@ -1,0 +1,46 @@
+{
+  "all": [
+    {
+      "id": 0,
+      "title": "Demon Slayer: Kimetsu no Yaiba Entertainment District Arc",
+      "type": "TV-show",
+      "rating": 9.6,
+      "year": 2021
+    },
+    {
+      "id": 1,
+      "title": "Kaguya-sama: Love is War - Ultra Romantic",
+      "type": "TV-show",
+      "rating": 9.3,
+      "year": 2022
+    },
+    {
+      "id": 2,
+      "title": "Mushoku Tensei: Isekai Ittara Honki Dasu Part 2",
+      "type": "TV-show",
+      "rating": 9.1,
+      "year": 2021
+    },
+    {
+      "id": 3,
+      "title": "Your Name.",
+      "type": "Movie",
+      "rating": 9.6,
+      "year": 2016
+    },
+    {
+      "id": 4,
+      "title": "Mushoku Tensei: Isekai Ittara Honki Dasu",
+      "type": "TV-show",
+      "rating": 9.5,
+      "year": 2021
+    },
+    {
+      "id": 5,
+      "title": "A Silent Voice",
+      "type": "Movie",
+      "rating": 9.3,
+      "year": 2016
+    }
+  ]
+}
