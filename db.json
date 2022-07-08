@@ -1,46 +1,214 @@
 {
-  "all": [
+  "players": [
     {
       "id": 0,
-      "title": "Demon Slayer: Kimetsu no Yaiba Entertainment District Arc",
-      "type": "TV-show",
-      "rating": 9.6,
-      "year": 2021
+      "name": "Robert",
+      "surname": "Lewandowski",
+      "country": "Poland",
+      "positions": ["ST"],
+      "age": 32,
+      "rating": 92,
+      "club": "FC Bayern München"
     },
     {
       "id": 1,
-      "title": "Kaguya-sama: Love is War - Ultra Romantic",
-      "type": "TV-show",
-      "rating": 9.3,
-      "year": 2022
+      "name": "Lionel",
+      "surname": "Messi",
+      "country": "Argentina",
+      "positions": ["RW", "ST", "CF"],
+      "age": 34,
+      "rating": 92,
+      "club": "Paris Saint-Germain"
     },
     {
       "id": 2,
-      "title": "Mushoku Tensei: Isekai Ittara Honki Dasu Part 2",
-      "type": "TV-show",
-      "rating": 9.1,
-      "year": 2021
+      "name": "Kylian",
+      "surname": "Mbappe",
+      "country": "France",
+      "positions": ["ST", "LW"],
+      "age": 22,
+      "rating": 91,
+      "club": "Paris Saint-Germain"
     },
     {
       "id": 3,
-      "title": "Your Name.",
-      "type": "Movie",
-      "rating": 9.6,
-      "year": 2016
+      "name": "Sergio",
+      "surname": "Reguilón",
+      "country": "Spain",
+      "positions": ["LWB", "LB"],
+      "age": 24,
+      "rating": 80,
+      "club": "Tottenham Hotspur"
     },
     {
       "id": 4,
-      "title": "Mushoku Tensei: Isekai Ittara Honki Dasu",
-      "type": "TV-show",
-      "rating": 9.5,
-      "year": 2021
+      "name": "Manuel",
+      "surname": "Lazzari",
+      "country": "Italy",
+      "positions": ["RB", "RWB", "RM"],
+      "age": 27,
+      "rating": 79,
+      "club": "Lazio"
     },
     {
       "id": 5,
-      "title": "A Silent Voice",
-      "type": "Movie",
-      "rating": 9.3,
-      "year": 2016
+      "name": "Nuno",
+      "surname": "Miguel",
+      "country": "Portugal",
+      "positions": ["LW", "LWB", "RW"],
+      "age": 26,
+      "rating": 78,
+      "club": "Sporting"
+    },
+    {
+      "id": 6,
+      "name": "Kai",
+      "surname": "Havertz",
+      "country": "Germany",
+      "positions": ["CAM", "CF", "ST"],
+      "age": 22,
+      "rating": 84,
+      "club": "Chelsea"
+    },
+    {
+      "id": 7,
+      "name": "Sérgio",
+      "surname": "Oliveira",
+      "country": "Portugal",
+      "positions": ["CM"],
+      "age": 29,
+      "rating": 80,
+      "club": "Roma"
+    },
+    {
+      "id": 8,
+      "name": "Matthijs",
+      "surname": "de Ligt",
+      "country": "Netherlands",
+      "positions": ["CB"],
+      "age": 21,
+      "rating": 85,
+      "club": "Juventus"
+    },
+    {
+      "id": 9,
+      "name": "Karim",
+      "surname": "Adeyemi",
+      "country": "Germany",
+      "positions": ["ST"],
+      "age": 19,
+      "rating": 74,
+      "club": "FC Red Bull Salzburg"
+    },
+    {
+      "id": 10,
+      "name": "Paulo",
+      "surname": "Dybala",
+      "country": "Argentina",
+      "positions": ["CF", "RW"],
+      "age": 27,
+      "rating": 87,
+      "club": "Juventus"
+    },
+    {
+      "id": 11,
+      "name": "Clément",
+      "surname": "Lenglet",
+      "country": "France",
+      "positions": ["CB"],
+      "age": 26,
+      "rating": 80,
+      "club": "FC Barcelona"
+    },
+    {
+      "id": 12,
+      "name": "Mason",
+      "surname": "Mount",
+      "country": "England",
+      "positions": ["CAM", "RW"],
+      "age": 22,
+      "rating": 83,
+      "club": "Chelsea"
+    },
+    {
+      "id": 13,
+      "name": "Reece",
+      "surname": "James",
+      "country": "England",
+      "positions": ["RWB", "RB"],
+      "age": 21,
+      "rating": 83,
+      "club": "Chelsea"
+    },
+    {
+      "id": 14,
+      "name": "Olivier",
+      "surname": "Giroud",
+      "country": "France",
+      "positions": ["ST"],
+      "age": 34,
+      "rating": 81,
+      "club": "AC Milan"
+    },
+    {
+      "id": 15,
+      "name": "Dušan",
+      "surname": "Tadić",
+      "country": "Serbia",
+      "positions": ["LW"],
+      "age": 32,
+      "rating": 84,
+      "club": "Ajax"
+    },
+    {
+      "id": 16,
+      "name": "Noussair",
+      "surname": "Mazraoui",
+      "country": "Morocco",
+      "positions": ["RB"],
+      "age": 23,
+      "rating": 82,
+      "club": "Ajax"
+    },
+    {
+      "id": 17,
+      "name": "Richarlison",
+      "surname": "de Andrade",
+      "country": "Brazil",
+      "positions": ["LW", "ST"],
+      "age": 24,
+      "rating": 80,
+      "club": "Everton"
+    },
+    {
+      "id": 18,
+      "name": "Nathan",
+      "surname": "Aké",
+      "country": "Netherlands",
+      "positions": ["RB", "CB", "LB"],
+      "age": 26,
+      "rating": 79,
+      "club": "Manchester City"
+    },
+    {
+      "id": 19,
+      "name": "Eduardo",
+      "surname": "Camavinga",
+      "country": "France",
+      "positions": ["CM", "CMD"],
+      "age": 18,
+      "rating": 79,
+      "club": "Real Madrid CF"
+    },
+    {
+      "id": 20,
+      "name": "Thibaut",
+      "surname": "Courtois",
+      "country": "Belgium",
+      "positions": ["GK"],
+      "age": 29,
+      "rating": 89,
+      "club": "Real Madrid CF"
     }
   ]
 }
