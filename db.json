@@ -15,7 +15,17 @@
       "name": "Lionel",
       "surname": "Messi",
       "country": "Argentina",
-      "positions": ["RW", "ST", "CF"],
+      "positions": [
+        {
+          "0": "RW"
+        },
+        {
+          "1": "ST"
+        },
+        {
+          "2": "CF"
+        }
+      ],
       "age": 34,
       "rating": 92,
       "club": "Paris Saint-Germain"
@@ -219,6 +229,56 @@
       "age": 21,
       "rating": 59,
       "club": "La Equidad"
+    },
+    {
+      "age": 21,
+      "rating": 59,
+      "name": "Sardor",
+      "surname": "Alijanov",
+      "country": "Portugal",
+      "club": "Chelsea",
+      "id": 22,
+      "positions": ["GK"]
+    }
+  ],
+  "teams": [
+    {
+      "id": 0,
+      "name": "Chelsea",
+      "league": "English Premier League"
+    },
+    {
+      "id": 1,
+      "name": "Tottenham Hotspur",
+      "league": "English Premier League"
+    },
+    {
+      "id": 2,
+      "name": "Everton",
+      "league": "English Premier League"
+    },
+    {
+      "id": 3,
+      "name": "Manchester City",
+      "league": "English Premier League"
+    }
+  ],
+  "countries": [
+    {
+      "id": 0,
+      "name": "England"
+    },
+    {
+      "id": 1,
+      "name": "France"
+    },
+    {
+      "id": 2,
+      "name": "Portugal"
+    },
+    {
+      "id": 3,
+      "name": "Brazil"
     }
   ]
 }
