@@ -1,13 +1,18 @@
 import React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
 import Select from "@mui/material/Select";
+import Slider from "@mui/material/Slider";
+import Divider from "@mui/material/Divider";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import Typography from "@mui/material/Typography";
+import CardContent from "@mui/material/CardContent";
+import FormControl from "@mui/material/FormControl";
+import CardActions from "@mui/material/CardActions";
+
+import SearchBar from "../SearchBar/index";
 
 function valuetext(value) {
   return `${value}`;
@@ -15,14 +20,24 @@ function valuetext(value) {
 
 const Filter = () => {
   const [value, setValue] = React.useState([0, 99]);
-  const [type, setType] = React.useState("");
+  const [rating, setRating] = React.useState([0, 99]);
+  const [positions, setPositions] = React.useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const handleRatingChange = (event, newValue) => {
+    setRating(newValue);
+  };
 
-  const handleTypeChange = (event) => {
-    setType(event.target.value);
+  const handlePositionsChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPositions(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
   };
 
   const marks = [
@@ -56,29 +71,69 @@ const Filter = () => {
             Filter
           </Typography>
 
-          <Slider
-            getAriaLabel={() => "Temperature range"}
-            value={value}
-            onChange={handleChange}
-            valueLabelDisplay="auto"
-            getAriaValueText={valuetext}
-            marks={marks}
-          />
+          <Divider />
+
+          <SearchBar />
+
+          <Divider />
+
+          <Box>
+            <Typography gutterBottom>Age</Typography>
+
+            <Slider
+              value={value}
+              onChange={handleChange}
+              valueLabelDisplay="auto"
+              getAriaValueText={valuetext}
+              marks={marks}
+            />
+          </Box>
+          <Box>
+            <Typography gutterBottom>Rating</Typography>
+
+            <Slider
+              value={rating}
+              onChange={handleRatingChange}
+              valueLabelDisplay="auto"
+              getAriaValueText={valuetext}
+              marks={marks}
+            />
+          </Box>
 
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Type</InputLabel>
+            <InputLabel id="demo-simple-select-label">Position</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={type}
-              label="Type"
-              onChange={handleTypeChange}
+              value={positions}
+              label="Position"
+              onChange={handlePositionsChange}
             >
-              <MenuItem value={"TV-show"}>TV-show</MenuItem>
-              <MenuItem value={"Movie"}>Movie</MenuItem>
+              <MenuItem value={"GK"}>GK</MenuItem>
+              <MenuItem value={"RWB"}>RWB</MenuItem>
+              <MenuItem value={"RB"}>RB</MenuItem>
+              <MenuItem value={"CB"}>CB</MenuItem>
+              <MenuItem value={"LB"}>LB</MenuItem>
+              <MenuItem value={"LWB"}>LWB</MenuItem>
+              <MenuItem value={"CDM"}>CDM</MenuItem>
+              <MenuItem value={"RM"}>RM</MenuItem>
+              <MenuItem value={"CM"}>CM</MenuItem>
+              <MenuItem value={"LM"}>LM</MenuItem>
+              <MenuItem value={"CAM"}>CAM</MenuItem>
+              <MenuItem value={"RF"}>RF</MenuItem>
+              <MenuItem value={"CF"}>CF</MenuItem>
+              <MenuItem value={"LF"}>LF</MenuItem>
+              <MenuItem value={"RW"}>RW</MenuItem>
+              <MenuItem value={"ST"}>ST</MenuItem>
+              <MenuItem value={"LW"}>LW</MenuItem>
             </Select>
           </FormControl>
         </CardContent>
+        <CardActions>
+          <Button size="small" color="primary">
+            SUBMIT
+          </Button>
+        </CardActions>
       </Card>
     </Box>
   );

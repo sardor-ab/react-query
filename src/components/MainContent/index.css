@@ -3,6 +3,6 @@
   border-radius: 5px;
   border: 1px solid gray;
 }
-.MainComponent__content-search {
-  padding: 15px 0;
+.MainComponent__content-header {
+  padding: 0px 10px;
 }

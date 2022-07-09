@@ -209,6 +209,16 @@
       "age": 29,
       "rating": 89,
       "club": "Real Madrid CF"
+    },
+    {
+      "id": 21,
+      "name": "Julian",
+      "surname": "Huertas",
+      "country": "Colombia",
+      "positions": ["GK"],
+      "age": 21,
+      "rating": 59,
+      "club": "La Equidad"
     }
   ]
 }
