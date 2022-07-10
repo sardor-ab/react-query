@@ -1,6 +1,4 @@
 import React from "react";
-import axios from "axios";
-import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
@@ -27,8 +25,7 @@ import MenuItem from "@mui/material/MenuItem";
 import "./index.css";
 import { useAddNewPlayerData } from "../../hooks/hooks";
 
-const ItemList = () => {
-  const [page, setPage] = React.useState(1);
+const PlayerTable = ({ data, page, setNextPage, setPrevPage }) => {
   const [open, setOpen] = React.useState(false);
   const addNewPlayer = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -87,6 +84,7 @@ const ItemList = () => {
         country: "",
         club: "",
       });
+      handleClose();
     }
   };
 
@@ -103,7 +101,7 @@ const ItemList = () => {
   };
 
   const handleInputNameChange = (event) => {
-    setFormValues({ ...formValues, firstName: event.target.value });
+    setFormValues({ ...formValues, name: event.target.value });
   };
   const handleInputSurNameChange = (event) => {
     setFormValues({ ...formValues, surname: event.target.value });
@@ -115,37 +113,12 @@ const ItemList = () => {
     setFormValues({ ...formValues, rating: event.target.value });
   };
 
-  const fetchPlayers = (page) => {
-    return axios.get(`http://localhost:3001/players?_limit=5&_page=${page}`);
-  };
-
-  const { isLoading, isError, data, error } = useQuery(
-    ["players", page],
-    () => fetchPlayers(page),
-    {
-      refetchInterval: 2000,
-      refetchIntervalInBackground: true,
-    }
-  );
-
-  if (isLoading) {
-    return (
-      <Box sx={{ display: "flex" }}>
-        <CircularProgress />
-      </Box>
-    );
-  }
-
   if (isMutating) {
     return (
       <Box className="Loading" sx={{ display: "flex" }}>
         <CircularProgress />
       </Box>
     );
-  }
-
-  if (isError) {
-    return <div>Error: {error.message}</div>;
   }
 
   function createData(
@@ -239,18 +212,12 @@ const ItemList = () => {
       <Stack spacing={2} direction="row" className="ItemsList__action">
         <div className="ItemsList__action-pages">
           {page !== 1 && (
-            <Button
-              variant="contained"
-              onClick={() => setPage((page) => page - 1)}
-            >
+            <Button variant="contained" onClick={setPrevPage}>
               Prevoius
             </Button>
           )}
           {page !== 5 && (
-            <Button
-              variant="contained"
-              onClick={() => setPage((page) => page + 1)}
-            >
+            <Button variant="contained" onClick={setNextPage}>
               Next
             </Button>
           )}
@@ -269,7 +236,7 @@ const ItemList = () => {
               type="text"
               fullWidth
               variant="standard"
-              value={formValues.firstName}
+              value={formValues.name}
               onChange={handleInputNameChange}
             />
             <TextField
@@ -377,4 +344,4 @@ const ItemList = () => {
   );
 };
 
-export default ItemList;
+export default PlayerTable;

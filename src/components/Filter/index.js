@@ -12,19 +12,17 @@ import CardContent from "@mui/material/CardContent";
 import FormControl from "@mui/material/FormControl";
 import CardActions from "@mui/material/CardActions";
 
-import SearchBar from "../SearchBar/index";
+import SearchBar from "../SearchBar/";
 
-function valuetext(value) {
-  return `${value}`;
-}
+const getAriaValueText = (value) => String(value);
 
 const Filter = () => {
-  const [value, setValue] = React.useState([0, 99]);
+  const [age, setAge] = React.useState([0, 99]);
   const [rating, setRating] = React.useState([0, 99]);
   const [positions, setPositions] = React.useState("");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleAgeChange = (event, newValue) => {
+    setAge(newValue);
   };
   const handleRatingChange = (event, newValue) => {
     setRating(newValue);
@@ -34,10 +32,7 @@ const Filter = () => {
     const {
       target: { value },
     } = event;
-    setPositions(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+    setPositions(typeof value === "string" ? value.split(",") : value);
   };
 
   const marks = [
@@ -81,10 +76,10 @@ const Filter = () => {
             <Typography gutterBottom>Age</Typography>
 
             <Slider
-              value={value}
-              onChange={handleChange}
+              value={age}
+              onChange={handleAgeChange}
               valueLabelDisplay="auto"
-              getAriaValueText={valuetext}
+              getAriaValueText={getAriaValueText}
               marks={marks}
             />
           </Box>
@@ -95,7 +90,7 @@ const Filter = () => {
               value={rating}
               onChange={handleRatingChange}
               valueLabelDisplay="auto"
-              getAriaValueText={valuetext}
+              getAriaValueText={getAriaValueText}
               marks={marks}
             />
           </Box>

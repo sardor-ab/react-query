@@ -231,14 +231,14 @@
       "club": "La Equidad"
     },
     {
-      "age": 21,
-      "rating": 59,
-      "name": "Sardor",
-      "surname": "Alijanov",
-      "country": "Portugal",
+      "name": "Codeplus",
+      "surname": "Codeplus",
+      "country": "England",
       "club": "Chelsea",
-      "id": 22,
-      "positions": ["GK"]
+      "position": "CF",
+      "age": "22",
+      "rating": "50",
+      "id": 22
     }
   ],
   "teams": [

@@ -1,8 +1,8 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Filter from "../../components/Filter/index";
-import MainContent from "../../components/MainContent/index";
+import Filter from "../../components/Filter/";
+import MainContent from "../../components/MainContent/";
 
 const MainPage = () => {
   return (
