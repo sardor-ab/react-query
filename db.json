@@ -239,6 +239,16 @@
       "age": "22",
       "rating": "50",
       "id": 22
+    },
+    {
+      "name": "Itachi",
+      "surname": "Uchiha",
+      "country": "England",
+      "club": "Chelsea",
+      "position": "ST",
+      "age": "22",
+      "rating": "85",
+      "id": 23
     }
   ],
   "teams": [
@@ -261,24 +271,6 @@
       "id": 3,
       "name": "Manchester City",
       "league": "English Premier League"
-    }
-  ],
-  "countries": [
-    {
-      "id": 0,
-      "name": "England"
-    },
-    {
-      "id": 1,
-      "name": "France"
-    },
-    {
-      "id": 2,
-      "name": "Portugal"
-    },
-    {
-      "id": 3,
-      "name": "Brazil"
     }
   ]
 }

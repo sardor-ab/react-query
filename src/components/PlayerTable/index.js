@@ -24,11 +24,21 @@ import MenuItem from "@mui/material/MenuItem";
 
 import "./index.css";
 import { useAddNewPlayerData } from "../../hooks/hooks";
+import { queryClient } from "../../App";
 
-const PlayerTable = ({ data, page, setNextPage, setPrevPage }) => {
+const PlayerTable = ({
+  data,
+  page,
+  playersPerPage,
+  setPlayersPerPage,
+  setNextPage,
+  setPrevPage,
+}) => {
   const [open, setOpen] = React.useState(false);
   const addNewPlayer = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  let canOpenNextPage = data.length >= playersPerPage ? {} : false;
 
   const [formValues, setFormValues] = React.useState({
     name: "",
@@ -51,7 +61,11 @@ const PlayerTable = ({ data, page, setNextPage, setPrevPage }) => {
     console.log(form);
   };
 
-  const { mutate, isLoading: isMutating } = useAddNewPlayerData();
+  const {
+    mutate,
+    isLoading: isMutating,
+    isError: mutatingError,
+  } = useAddNewPlayerData();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -112,6 +126,15 @@ const PlayerTable = ({ data, page, setNextPage, setPrevPage }) => {
   const handleInputRatingChange = (event) => {
     setFormValues({ ...formValues, rating: event.target.value });
   };
+  const handlePlayersPerPageChange = (event) => {
+    setPlayersPerPage(event.target.value);
+  };
+
+  const sortByTeam = () => {
+    queryClient.setQueryData("players", (data) => {
+      console.log("data: ", data);
+    });
+  };
 
   if (isMutating) {
     return (
@@ -119,6 +142,10 @@ const PlayerTable = ({ data, page, setNextPage, setPrevPage }) => {
         <CircularProgress />
       </Box>
     );
+  }
+
+  if (mutatingError) {
+    return <div>Oops...we are facing some error :(</div>;
   }
 
   function createData(
@@ -134,7 +161,7 @@ const PlayerTable = ({ data, page, setNextPage, setPrevPage }) => {
     return { id, name, surname, positions, country, age, rating, club };
   }
 
-  const rows = data?.data.map((player) => {
+  const rows = data?.map((player) => {
     return createData(
       player.id,
       player.name,
@@ -203,28 +230,45 @@ const PlayerTable = ({ data, page, setNextPage, setPrevPage }) => {
                     {row.rating}
                   </span>
                 </TableCell>
-                <TableCell align="center">{row.club}</TableCell>
+                <TableCell align="center">
+                  <span onClick={sortByTeam}>{row.club}</span>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
       <Stack spacing={2} direction="row" className="ItemsList__action">
-        <div className="ItemsList__action-pages">
+        <div className="PlayerTable__action-pages">
           {page !== 1 && (
             <Button variant="contained" onClick={setPrevPage}>
               Prevoius
             </Button>
           )}
-          {page !== 5 && (
+          {canOpenNextPage && (
             <Button variant="contained" onClick={setNextPage}>
               Next
             </Button>
           )}
         </div>
-        <Button variant="outline" onClick={addNewPlayer}>
-          ADD A PLAYER
-        </Button>
+        <div className="PlayerTable__action-players">
+          <InputLabel id="select-playersPerPage-label">per Page</InputLabel>
+          <Select
+            labelId="select-playersPerPage-label"
+            id="playersPerPage-select"
+            value={playersPerPage}
+            label="playersPerPage"
+            onChange={handlePlayersPerPageChange}
+          >
+            <MenuItem value={5}>Five</MenuItem>
+            <MenuItem value={7}>Seven</MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+          </Select>
+          <Button variant="outline" onClick={addNewPlayer}>
+            ADD A PLAYER
+          </Button>
+        </div>
+
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>A NEW PLAYER</DialogTitle>
           <DialogContent>

@@ -8,7 +8,7 @@ import TeamPage from "./pages/Team";
 import "./App.css";
 
 // Create a client
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 function App() {
   return (

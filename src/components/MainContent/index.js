@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery, useInfiniteQuery } from "react-query";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import PlayerTable from "../PlayerTable";
@@ -8,6 +8,7 @@ import "./index.css";
 
 const MainComponent = () => {
   const [page, setPage] = useState(1);
+  const [playersPerPage, setPlayersPerPage] = useState(5);
 
   const setPrevPage = () => {
     setPage(page - 1);
@@ -19,16 +20,18 @@ const MainComponent = () => {
 
   const fetchPlayers = async (page) => {
     return await axios.get(
-      `http://localhost:3001/players?_limit=5&_page=${page}`
+      `http://localhost:3001/players?_limit=${playersPerPage}&_page=${page}`
     );
   };
 
-  const { isLoading, isError, data, error } = useQuery(
-    ["players", page],
+  const { isLoading, isError, data, error } = useInfiniteQuery(
+    ["players", page, playersPerPage],
     () => fetchPlayers(page),
     {
       refetchInterval: 2000,
       refetchIntervalInBackground: true,
+      getPreviousPageParam: (firstPage) => firstPage.previousId ?? undefined,
+      getNextPageParam: (lastPage) => lastPage.nextId ?? undefined,
     }
   );
 
@@ -52,8 +55,10 @@ const MainComponent = () => {
         </div>
         <div className="MainComponent__content-body">
           <PlayerTable
-            data={data}
+            data={data?.pages[0].data}
             page={page}
+            playersPerPage={playersPerPage}
+            setPlayersPerPage={setPlayersPerPage}
             setNextPage={setNextPage}
             setPrevPage={setPrevPage}
           />

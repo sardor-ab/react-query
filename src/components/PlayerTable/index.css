@@ -1,25 +1,29 @@
 .rating-text {
   padding: 10px;
   color: #fff;
+  font-weight: bold;
   text-align: center !important;
 }
 .elite {
-  background: #0c8539 !important;
+  color: #0c8539 !important;
+  background: #57ef90 !important;
 }
 .excellent {
-  background: #66a80f !important;
+  color: #66a80f !important;
+  background: #b6f168 !important;
 }
 .good {
-  background: #e6b600 !important;
+  color: #e6b600 !important;
+  background: #ffe173 !important;
 }
 .poor {
-  background: #d95c0f !important;
+  color: #d95c0f !important;
+  background: #f6ab7c !important;
 }
 .ItemsList__action {
   padding: 15px 10px;
-}
-.ItemsList__action {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 .Loading {
