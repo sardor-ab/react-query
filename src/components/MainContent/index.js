@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useQuery, useInfiniteQuery } from "react-query";
+import { useInfiniteQuery } from "react-query";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import PlayerTable from "../PlayerTable";
@@ -30,8 +30,6 @@ const MainComponent = () => {
     {
       refetchInterval: 2000,
       refetchIntervalInBackground: true,
-      getPreviousPageParam: (firstPage) => firstPage.previousId ?? undefined,
-      getNextPageParam: (lastPage) => lastPage.nextId ?? undefined,
     }
   );
 
@@ -58,6 +56,7 @@ const MainComponent = () => {
             data={data?.pages[0].data}
             page={page}
             playersPerPage={playersPerPage}
+            setPage={setPage}
             setPlayersPerPage={setPlayersPerPage}
             setNextPage={setNextPage}
             setPrevPage={setPrevPage}

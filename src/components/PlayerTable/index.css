@@ -2,23 +2,23 @@
   padding: 10px;
   color: #fff;
   font-weight: bold;
-  text-align: center !important;
+  text-align: center;
 }
 .elite {
-  color: #0c8539 !important;
-  background: #57ef90 !important;
+  color: #0c8539;
+  background: #57ef90;
 }
 .excellent {
-  color: #66a80f !important;
-  background: #b6f168 !important;
+  color: #66a80f;
+  background: #b6f168;
 }
 .good {
-  color: #e6b600 !important;
-  background: #ffe173 !important;
+  color: #e6b600;
+  background: #ffe173;
 }
 .poor {
-  color: #d95c0f !important;
-  background: #f6ab7c !important;
+  color: #d95c0f;
+  background: #f6ab7c;
 }
 .ItemsList__action {
   padding: 15px 10px;

@@ -5,7 +5,9 @@
       "name": "Robert",
       "surname": "Lewandowski",
       "country": "Poland",
-      "positions": ["ST"],
+      "positions": [
+        "ST"
+      ],
       "age": 32,
       "rating": 92,
       "club": "FC Bayern München"
@@ -35,7 +37,10 @@
       "name": "Kylian",
       "surname": "Mbappe",
       "country": "France",
-      "positions": ["ST", "LW"],
+      "positions": [
+        "ST",
+        "LW"
+      ],
       "age": 22,
       "rating": 91,
       "club": "Paris Saint-Germain"
@@ -45,7 +50,10 @@
       "name": "Sergio",
       "surname": "Reguilón",
       "country": "Spain",
-      "positions": ["LWB", "LB"],
+      "positions": [
+        "LWB",
+        "LB"
+      ],
       "age": 24,
       "rating": 80,
       "club": "Tottenham Hotspur"
@@ -55,7 +63,11 @@
       "name": "Manuel",
       "surname": "Lazzari",
       "country": "Italy",
-      "positions": ["RB", "RWB", "RM"],
+      "positions": [
+        "RB",
+        "RWB",
+        "RM"
+      ],
       "age": 27,
       "rating": 79,
       "club": "Lazio"
@@ -65,7 +77,11 @@
       "name": "Nuno",
       "surname": "Miguel",
       "country": "Portugal",
-      "positions": ["LW", "LWB", "RW"],
+      "positions": [
+        "LW",
+        "LWB",
+        "RW"
+      ],
       "age": 26,
       "rating": 78,
       "club": "Sporting"
@@ -75,7 +91,11 @@
       "name": "Kai",
       "surname": "Havertz",
       "country": "Germany",
-      "positions": ["CAM", "CF", "ST"],
+      "positions": [
+        "CAM",
+        "CF",
+        "ST"
+      ],
       "age": 22,
       "rating": 84,
       "club": "Chelsea"
@@ -85,7 +105,9 @@
       "name": "Sérgio",
       "surname": "Oliveira",
       "country": "Portugal",
-      "positions": ["CM"],
+      "positions": [
+        "CM"
+      ],
       "age": 29,
       "rating": 80,
       "club": "Roma"
@@ -95,7 +117,9 @@
       "name": "Matthijs",
       "surname": "de Ligt",
       "country": "Netherlands",
-      "positions": ["CB"],
+      "positions": [
+        "CB"
+      ],
       "age": 21,
       "rating": 85,
       "club": "Juventus"
@@ -105,7 +129,9 @@
       "name": "Karim",
       "surname": "Adeyemi",
       "country": "Germany",
-      "positions": ["ST"],
+      "positions": [
+        "ST"
+      ],
       "age": 19,
       "rating": 74,
       "club": "FC Red Bull Salzburg"
@@ -115,7 +141,10 @@
       "name": "Paulo",
       "surname": "Dybala",
       "country": "Argentina",
-      "positions": ["CF", "RW"],
+      "positions": [
+        "CF",
+        "RW"
+      ],
       "age": 27,
       "rating": 87,
       "club": "Juventus"
@@ -125,7 +154,9 @@
       "name": "Clément",
       "surname": "Lenglet",
       "country": "France",
-      "positions": ["CB"],
+      "positions": [
+        "CB"
+      ],
       "age": 26,
       "rating": 80,
       "club": "FC Barcelona"
@@ -135,7 +166,10 @@
       "name": "Mason",
       "surname": "Mount",
       "country": "England",
-      "positions": ["CAM", "RW"],
+      "positions": [
+        "CAM",
+        "RW"
+      ],
       "age": 22,
       "rating": 83,
       "club": "Chelsea"
@@ -145,7 +179,10 @@
       "name": "Reece",
       "surname": "James",
       "country": "England",
-      "positions": ["RWB", "RB"],
+      "positions": [
+        "RWB",
+        "RB"
+      ],
       "age": 21,
       "rating": 83,
       "club": "Chelsea"
@@ -155,7 +192,9 @@
       "name": "Olivier",
       "surname": "Giroud",
       "country": "France",
-      "positions": ["ST"],
+      "positions": [
+        "ST"
+      ],
       "age": 34,
       "rating": 81,
       "club": "AC Milan"
@@ -165,7 +204,9 @@
       "name": "Dušan",
       "surname": "Tadić",
       "country": "Serbia",
-      "positions": ["LW"],
+      "positions": [
+        "LW"
+      ],
       "age": 32,
       "rating": 84,
       "club": "Ajax"
@@ -175,7 +216,9 @@
       "name": "Noussair",
       "surname": "Mazraoui",
       "country": "Morocco",
-      "positions": ["RB"],
+      "positions": [
+        "RB"
+      ],
       "age": 23,
       "rating": 82,
       "club": "Ajax"
@@ -185,7 +228,10 @@
       "name": "Richarlison",
       "surname": "de Andrade",
       "country": "Brazil",
-      "positions": ["LW", "ST"],
+      "positions": [
+        "LW",
+        "ST"
+      ],
       "age": 24,
       "rating": 80,
       "club": "Everton"
@@ -195,7 +241,11 @@
       "name": "Nathan",
       "surname": "Aké",
       "country": "Netherlands",
-      "positions": ["RB", "CB", "LB"],
+      "positions": [
+        "RB",
+        "CB",
+        "LB"
+      ],
       "age": 26,
       "rating": 79,
       "club": "Manchester City"
@@ -205,7 +255,10 @@
       "name": "Eduardo",
       "surname": "Camavinga",
       "country": "France",
-      "positions": ["CM", "CMD"],
+      "positions": [
+        "CM",
+        "CMD"
+      ],
       "age": 18,
       "rating": 79,
       "club": "Real Madrid CF"
@@ -215,7 +268,9 @@
       "name": "Thibaut",
       "surname": "Courtois",
       "country": "Belgium",
-      "positions": ["GK"],
+      "positions": [
+        "GK"
+      ],
       "age": 29,
       "rating": 89,
       "club": "Real Madrid CF"
@@ -225,7 +280,9 @@
       "name": "Julian",
       "surname": "Huertas",
       "country": "Colombia",
-      "positions": ["GK"],
+      "positions": [
+        "GK"
+      ],
       "age": 21,
       "rating": 59,
       "club": "La Equidad"
@@ -249,6 +306,27 @@
       "age": "22",
       "rating": "85",
       "id": 23
+    },
+    {
+      "name": "",
+      "surname": "",
+      "country": "",
+      "club": "",
+      "position": "",
+      "age": "",
+      "rating": 0,
+      "": "asdasdadas",
+      "id": 24
+    },
+    {
+      "name": "Сардор",
+      "surname": "asd",
+      "country": "Portugal",
+      "club": "Chelsea",
+      "position": "CM",
+      "age": "21",
+      "rating": "99",
+      "id": 25
     }
   ],
   "teams": [

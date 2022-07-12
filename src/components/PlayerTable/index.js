@@ -1,30 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
+import Dialog from "@mui/material/Dialog";
+import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
 import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import CircularProgress from "@mui/material/CircularProgress";
-
 import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
+import InputLabel from "@mui/material/InputLabel";
+import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-
-import "./index.css";
+import TableContainer from "@mui/material/TableContainer";
+import CircularProgress from "@mui/material/CircularProgress";
 import { useAddNewPlayerData } from "../../hooks/hooks";
 import { queryClient } from "../../App";
+import "./index.css";
 
 const PlayerTable = ({
   data,
@@ -34,13 +32,13 @@ const PlayerTable = ({
   setNextPage,
   setPrevPage,
 }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const addNewPlayer = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  let canOpenNextPage = data.length >= playersPerPage ? {} : false;
+  let canOpenNextPage = data.length >= playersPerPage ? true : false;
 
-  const [formValues, setFormValues] = React.useState({
+  const [formValues, setFormValues] = useState({
     name: "",
     surname: "",
     country: "",
@@ -50,7 +48,7 @@ const PlayerTable = ({
     rating: 0,
   });
 
-  const [errors, setErrors] = React.useState({
+  const [errors, setErrors] = useState({
     errorFN: false,
     errorSN: false,
     errorCNTR: false,
@@ -102,29 +100,8 @@ const PlayerTable = ({
     }
   };
 
-  const handleCountryChange = (event) => {
-    // setCountry(event.target.value);
-    setFormValues({ ...formValues, country: event.target.value });
-  };
-  const handleClubChange = (event) => {
-    // setClub(event.target.value);
-    setFormValues({ ...formValues, club: event.target.value });
-  };
-  const handlePositionChange = (event) => {
-    setFormValues({ ...formValues, position: event.target.value });
-  };
-
-  const handleInputNameChange = (event) => {
-    setFormValues({ ...formValues, name: event.target.value });
-  };
-  const handleInputSurNameChange = (event) => {
-    setFormValues({ ...formValues, surname: event.target.value });
-  };
-  const handleInputAgeChange = (event) => {
-    setFormValues({ ...formValues, age: event.target.value });
-  };
-  const handleInputRatingChange = (event) => {
-    setFormValues({ ...formValues, rating: event.target.value });
+  const handleFormValueChange = (event) => {
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
   const handlePlayersPerPageChange = (event) => {
     setPlayersPerPage(event.target.value);
@@ -142,10 +119,6 @@ const PlayerTable = ({
         <CircularProgress />
       </Box>
     );
-  }
-
-  if (mutatingError) {
-    return <div>Oops...we are facing some error :(</div>;
   }
 
   function createData(
@@ -173,6 +146,22 @@ const PlayerTable = ({
       player.club
     );
   });
+
+  const getClassName = (rating) => {
+    let ratingStatus = "";
+
+    if (rating < 60) {
+      ratingStatus = "poor";
+    } else if (rating > 60 && rating < 70) {
+      ratingStatus = "good";
+    } else if (rating > 70 && rating < 80) {
+      ratingStatus = "excellent";
+    } else {
+      ratingStatus = "elite";
+    }
+
+    return `rating-text ${ratingStatus}`;
+  };
 
   return (
     <>
@@ -215,20 +204,7 @@ const PlayerTable = ({
                 <TableCell align="center">{row.country}</TableCell>
                 <TableCell align="center">{row.age}</TableCell>
                 <TableCell align="center">
-                  <span
-                    className={
-                      "rating-text " +
-                      (row.rating > 80
-                        ? "elite"
-                        : row.rating > 70
-                        ? "excellent"
-                        : row.rating > 60
-                        ? "good"
-                        : "poor")
-                    }
-                  >
-                    {row.rating}
-                  </span>
+                  <span className={getClassName(row.rating)}>{row.rating}</span>
                 </TableCell>
                 <TableCell align="center">
                   <span onClick={sortByTeam}>{row.club}</span>
@@ -276,103 +252,107 @@ const PlayerTable = ({
               autoFocus
               margin="dense"
               id="name"
+              name="name"
               label="Player's name"
               type="text"
               fullWidth
-              variant="standard"
               value={formValues.name}
-              onChange={handleInputNameChange}
+              variant="standard"
+              onChange={handleFormValueChange}
             />
             <TextField
               autoFocus
               margin="dense"
               id="surname"
+              name="surname"
               label="Player's surname"
               type="text"
               fullWidth
               value={formValues.surname}
               variant="standard"
-              onChange={handleInputSurNameChange}
+              onChange={handleFormValueChange}
             />
             <InputLabel id="select-country-label">Country</InputLabel>
             <Select
               labelId="select-country-label"
               id="select-country-label"
-              // value={country}
               value={formValues.country}
+              name="country"
               label="Country"
               fullWidth
-              onChange={handleCountryChange}
+              onChange={handleFormValueChange}
             >
-              <MenuItem value={"Portugal"}>Portugal</MenuItem>
-              <MenuItem value={"England"}>England</MenuItem>
-              <MenuItem value={"France"}>France</MenuItem>
+              <MenuItem value="Portugal">Portugal</MenuItem>
+              <MenuItem value="England">England</MenuItem>
+              <MenuItem value="France">France</MenuItem>
             </Select>
             <InputLabel id="select-club-label">Club</InputLabel>
             <Select
               labelId="select-club-label"
               id="select-club-label"
-              // value={club}
               value={formValues.club}
               label="Club"
+              name="club"
               fullWidth
-              onChange={handleClubChange}
+              onChange={handleFormValueChange}
             >
-              <MenuItem value={"Chelsea"}>Chelsea</MenuItem>
-              <MenuItem value={"Paris Saint-Germain"}>
+              <MenuItem value="Chelsea">Chelsea</MenuItem>
+              <MenuItem value="Paris Saint-Germain">
                 Paris Saint-Germain
               </MenuItem>
-              <MenuItem value={"Lazio"}>Lazio</MenuItem>
+              <MenuItem value="Lazio">Lazio</MenuItem>
             </Select>
             <InputLabel id="select-club-label">Position</InputLabel>
             <Select
               labelId="select-position-label"
               id="select-position-label"
-              // value={position}
               value={formValues.position}
               label="Position"
               fullWidth
-              onChange={handlePositionChange}
+              name="position"
+              onChange={handleFormValueChange}
             >
-              <MenuItem value={"GK"}>GK</MenuItem>
-              <MenuItem value={"RWB"}>RWB</MenuItem>
-              <MenuItem value={"RB"}>RB</MenuItem>
-              <MenuItem value={"CB"}>CB</MenuItem>
-              <MenuItem value={"LB"}>LB</MenuItem>
-              <MenuItem value={"LWB"}>LWB</MenuItem>
-              <MenuItem value={"CDM"}>CDM</MenuItem>
-              <MenuItem value={"RM"}>RM</MenuItem>
-              <MenuItem value={"CM"}>CM</MenuItem>
-              <MenuItem value={"LM"}>LM</MenuItem>
-              <MenuItem value={"CAM"}>CAM</MenuItem>
-              <MenuItem value={"RF"}>RF</MenuItem>
-              <MenuItem value={"CF"}>CF</MenuItem>
-              <MenuItem value={"LF"}>LF</MenuItem>
-              <MenuItem value={"RW"}>RW</MenuItem>
-              <MenuItem value={"ST"}>ST</MenuItem>
-              <MenuItem value={"LW"}>LW</MenuItem>
+              <MenuItem value="GK">GK</MenuItem>
+              <MenuItem value="RWB">RWB</MenuItem>
+              <MenuItem value="RB">RB</MenuItem>
+              <MenuItem value="CB">CB</MenuItem>
+              <MenuItem value="LB">LB</MenuItem>
+              <MenuItem value="LWB">LWB</MenuItem>
+              <MenuItem value="CDM">CDM</MenuItem>
+              <MenuItem value="RM">RM</MenuItem>
+              <MenuItem value="CM">CM</MenuItem>
+              <MenuItem value="LM">LM</MenuItem>
+              <MenuItem value="CAM">CAM</MenuItem>
+              <MenuItem value="RF">RF</MenuItem>
+              <MenuItem value="CF">CF</MenuItem>
+              <MenuItem value="LF">LF</MenuItem>
+              <MenuItem value="RW">RW</MenuItem>
+              <MenuItem value="ST">ST</MenuItem>
+              <MenuItem value="LW">LW</MenuItem>
             </Select>
             <TextField
               autoFocus
               margin="dense"
-              id="name"
+              id="player-age"
               label="Player's age"
               type="number"
               fullWidth
               variant="standard"
               value={formValues.age}
-              onChange={handleInputAgeChange}
+              name="age"
+              onChange={handleFormValueChange}
             />
             <TextField
               autoFocus
               margin="dense"
-              id="name"
+              id="player-rating"
               label="Player's rating"
               type="number"
               fullWidth
+              name="rating"
               variant="standard"
               value={formValues.rating}
-              onChange={handleInputRatingChange}
+              onChange={handleFormValueChange}
             />
           </DialogContent>
 

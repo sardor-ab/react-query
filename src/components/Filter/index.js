@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
@@ -17,9 +17,9 @@ import SearchBar from "../SearchBar/";
 const getAriaValueText = (value) => String(value);
 
 const Filter = () => {
-  const [age, setAge] = React.useState([0, 99]);
-  const [rating, setRating] = React.useState([0, 99]);
-  const [positions, setPositions] = React.useState("");
+  const [age, setAge] = useState([0, 99]);
+  const [rating, setRating] = useState([0, 99]);
+  const [positions, setPositions] = useState("");
 
   const handleAgeChange = (event, newValue) => {
     setAge(newValue);
