@@ -10,6 +10,7 @@ const SearchBar = () => {
         id="outlined-basic"
         label="Search player..."
         variant="outlined"
+        fullWidth
       />
     </div>
   );

@@ -21,8 +21,17 @@ import DialogContent from "@mui/material/DialogContent";
 import TableContainer from "@mui/material/TableContainer";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useAddNewPlayerData } from "../../hooks/hooks";
-import { queryClient } from "../../App";
 import "./index.css";
+
+const DEFAULT_FORMVALUES = {
+  name: "",
+  surname: "",
+  country: "",
+  club: "",
+  position: "",
+  age: 0,
+  rating: 0,
+};
 
 const PlayerTable = ({
   data,
@@ -36,116 +45,47 @@ const PlayerTable = ({
   const addNewPlayer = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  let canOpenNextPage = data.length >= playersPerPage ? true : false;
+  const [formValues, setFormValues] = useState(DEFAULT_FORMVALUES);
 
-  const [formValues, setFormValues] = useState({
-    name: "",
-    surname: "",
-    country: "",
-    club: "",
-    position: "",
-    age: "",
-    rating: 0,
-  });
+  const { mutate } = useAddNewPlayerData();
 
-  const [errors, setErrors] = useState({
-    errorFN: false,
-    errorSN: false,
-    errorCNTR: false,
-    errorClub: false,
-  });
+  let canOpenPrevPage = page > 1;
+  let canOpenNextPage = data.length >= playersPerPage;
 
   const validateForm = (form) => {
-    console.log(form);
+    let isValid = true;
+    for (let key in form) {
+      if (form[key] === "") {
+        isValid = false;
+      }
+    }
+    return isValid;
   };
 
-  const {
-    mutate,
-    isLoading: isMutating,
-    isError: mutatingError,
-  } = useAddNewPlayerData();
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (formValues.name === "") {
-      setErrors({ ...errors, errorFN: true });
-    }
-    if (formValues.surname === "") {
-      setErrors({ ...errors, errorSN: true });
-    }
-    if (formValues.country === "") {
-      setErrors({ ...errors, errorCNTR: true });
-    }
-    if (formValues.club === "") {
-      setErrors({ ...errors, errorClub: true });
-    }
-
-    validateForm(formValues);
-
-    if (
-      !errors.errorFN &&
-      !errors.errorFN &&
-      !errors.errorCNTR &&
-      !errors.errorClub
-    ) {
-      mutate(formValues);
-      setFormValues({
-        name: "",
-        surname: "",
-        country: "",
-        club: "",
+  const handleSubmit = () => {
+    if (validateForm(formValues)) {
+      mutate(formValues, {
+        onMutate: () => {
+          <Box className="Loading" sx={{ display: "flex" }}>
+            <CircularProgress />
+          </Box>;
+        },
+        onSuccess: () => {
+          setFormValues(DEFAULT_FORMVALUES);
+          setOpen(false);
+        },
+        onError: (error) => {},
       });
-      handleClose();
     }
   };
 
   const handleFormValueChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
+
   const handlePlayersPerPageChange = (event) => {
     setPlayersPerPage(event.target.value);
   };
-
-  const sortByTeam = () => {
-    queryClient.setQueryData("players", (data) => {
-      console.log("data: ", data);
-    });
-  };
-
-  if (isMutating) {
-    return (
-      <Box className="Loading" sx={{ display: "flex" }}>
-        <CircularProgress />
-      </Box>
-    );
-  }
-
-  function createData(
-    id,
-    name,
-    surname,
-    positions,
-    country,
-    age,
-    rating,
-    club
-  ) {
-    return { id, name, surname, positions, country, age, rating, club };
-  }
-
-  const rows = data?.map((player) => {
-    return createData(
-      player.id,
-      player.name,
-      player.surname,
-      player.positions,
-      player.country,
-      player.age,
-      player.rating,
-      player.club
-    );
-  });
 
   const getClassName = (rating) => {
     let ratingStatus = "";
@@ -177,20 +117,20 @@ const PlayerTable = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {data?.map((player) => (
               <TableRow
-                key={row.id}
+                key={player.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <Tooltip
-                  title={`${row.name} ${row.surname}`}
+                  title={`${player.name} ${player.surname}`}
                   placement="top"
                   arrow
                 >
                   <TableCell component="th" scope="row">
                     <div className="General__player-info">
-                      <Link to={`/player/${row.id}`}>
-                        {row.name[0]}.&nbsp;{row.surname}
+                      <Link to={`/player/${player.id}`}>
+                        {player.name[0]}.&nbsp;{player.surname}
                       </Link>
 
                       {/* <div className="General__player-info-positions">
@@ -201,14 +141,14 @@ const PlayerTable = ({
                     </div>
                   </TableCell>
                 </Tooltip>
-                <TableCell align="center">{row.country}</TableCell>
-                <TableCell align="center">{row.age}</TableCell>
+                <TableCell align="center">{player.country}</TableCell>
+                <TableCell align="center">{player.age}</TableCell>
                 <TableCell align="center">
-                  <span className={getClassName(row.rating)}>{row.rating}</span>
+                  <span className={getClassName(player.rating)}>
+                    {player.rating}
+                  </span>
                 </TableCell>
-                <TableCell align="center">
-                  <span onClick={sortByTeam}>{row.club}</span>
-                </TableCell>
+                <TableCell align="center">{player.club}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -216,7 +156,7 @@ const PlayerTable = ({
       </TableContainer>
       <Stack spacing={2} direction="row" className="ItemsList__action">
         <div className="PlayerTable__action-pages">
-          {page !== 1 && (
+          {canOpenPrevPage && (
             <Button variant="contained" onClick={setPrevPage}>
               Prevoius
             </Button>

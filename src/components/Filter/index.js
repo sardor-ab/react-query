@@ -16,47 +16,43 @@ import SearchBar from "../SearchBar/";
 
 const getAriaValueText = (value) => String(value);
 
+const MARKS = [
+  {
+    value: 0,
+    label: 0,
+  },
+  {
+    value: 25,
+    label: 25,
+  },
+  {
+    value: 50,
+    label: 50,
+  },
+  {
+    value: 75,
+    label: 75,
+  },
+  {
+    value: 100,
+    label: 100,
+  },
+];
+
 const Filter = () => {
-  const [age, setAge] = useState([0, 99]);
-  const [rating, setRating] = useState([0, 99]);
-  const [positions, setPositions] = useState("");
+  const [state, setState] = useState({
+    age: [0, 100],
+    rating: [0, 100],
+    position: "",
+  });
 
-  const handleAgeChange = (event, newValue) => {
-    setAge(newValue);
-  };
-  const handleRatingChange = (event, newValue) => {
-    setRating(newValue);
-  };
-
-  const handlePositionsChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPositions(typeof value === "string" ? value.split(",") : value);
+  const handleStateChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.value });
   };
 
-  const marks = [
-    {
-      value: 0,
-      label: 0,
-    },
-    {
-      value: 25,
-      label: 25,
-    },
-    {
-      value: 50,
-      label: 50,
-    },
-    {
-      value: 75,
-      label: 75,
-    },
-    {
-      value: 100,
-      label: 100,
-    },
-  ];
+  const handleSubmitFilter = () => {
+    console.log(state);
+  };
 
   return (
     <Box sx={{ minWidth: 275 }}>
@@ -76,22 +72,24 @@ const Filter = () => {
             <Typography gutterBottom>Age</Typography>
 
             <Slider
-              value={age}
-              onChange={handleAgeChange}
+              value={state.age}
+              onChange={handleStateChange}
+              name="age"
               valueLabelDisplay="auto"
               getAriaValueText={getAriaValueText}
-              marks={marks}
+              marks={MARKS}
             />
           </Box>
           <Box>
             <Typography gutterBottom>Rating</Typography>
 
             <Slider
-              value={rating}
-              onChange={handleRatingChange}
+              value={state.rating}
+              onChange={handleStateChange}
+              name="rating"
               valueLabelDisplay="auto"
               getAriaValueText={getAriaValueText}
-              marks={marks}
+              marks={MARKS}
             />
           </Box>
 
@@ -100,32 +98,33 @@ const Filter = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={positions}
+              value={state.position}
+              name="position"
               label="Position"
-              onChange={handlePositionsChange}
+              onChange={handleStateChange}
             >
-              <MenuItem value={"GK"}>GK</MenuItem>
-              <MenuItem value={"RWB"}>RWB</MenuItem>
-              <MenuItem value={"RB"}>RB</MenuItem>
-              <MenuItem value={"CB"}>CB</MenuItem>
-              <MenuItem value={"LB"}>LB</MenuItem>
-              <MenuItem value={"LWB"}>LWB</MenuItem>
-              <MenuItem value={"CDM"}>CDM</MenuItem>
-              <MenuItem value={"RM"}>RM</MenuItem>
-              <MenuItem value={"CM"}>CM</MenuItem>
-              <MenuItem value={"LM"}>LM</MenuItem>
-              <MenuItem value={"CAM"}>CAM</MenuItem>
-              <MenuItem value={"RF"}>RF</MenuItem>
-              <MenuItem value={"CF"}>CF</MenuItem>
-              <MenuItem value={"LF"}>LF</MenuItem>
-              <MenuItem value={"RW"}>RW</MenuItem>
-              <MenuItem value={"ST"}>ST</MenuItem>
-              <MenuItem value={"LW"}>LW</MenuItem>
+              <MenuItem value="GK">GK</MenuItem>
+              <MenuItem value="RWB">RWB</MenuItem>
+              <MenuItem value="RB">RB</MenuItem>
+              <MenuItem value="CB">CB</MenuItem>
+              <MenuItem value="LB">LB</MenuItem>
+              <MenuItem value="LWB">LWB</MenuItem>
+              <MenuItem value="CDM">CDM</MenuItem>
+              <MenuItem value="RM">RM</MenuItem>
+              <MenuItem value="CM">CM</MenuItem>
+              <MenuItem value="LM">LM</MenuItem>
+              <MenuItem value="CAM">CAM</MenuItem>
+              <MenuItem value="RF">RF</MenuItem>
+              <MenuItem value="CF">CF</MenuItem>
+              <MenuItem value="LF">LF</MenuItem>
+              <MenuItem value="RW">RW</MenuItem>
+              <MenuItem value="ST">ST</MenuItem>
+              <MenuItem value="LW">LW</MenuItem>
             </Select>
           </FormControl>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button onClick={handleSubmitFilter} size="small" color="primary">
             SUBMIT
           </Button>
         </CardActions>

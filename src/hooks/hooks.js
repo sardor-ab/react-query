@@ -9,8 +9,9 @@ export const useFetchData = (data, index) => {
   return useQuery([data, index], () => fetcher(data, index));
 };
 
-const addNewPlayer = (player) => {
-  return axios.post("http://localhost:3001/players", player);
+const addNewPlayer = async (player) => {
+  const res = await axios.post("http://localhost:3001/players", player);
+  return res;
 };
 
 export const useAddNewPlayerData = () => {

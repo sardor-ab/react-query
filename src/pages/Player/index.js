@@ -6,6 +6,7 @@ import { useFetchData } from "../../hooks/hooks";
 const PlayerPage = () => {
   const { id } = useParams();
   const { data } = useFetchData("players", id);
+
   return (
     <div className="PlayerPage">
       <div className="PlayerPage__content">
