@@ -1,0 +1,35 @@
+.rating-text {
+  padding: 10px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+.elite {
+  color: #0c8539;
+  background: #57ef90;
+}
+.excellent {
+  color: #66a80f;
+  background: #b6f168;
+}
+.good {
+  color: #e6b600;
+  background: #ffe173;
+}
+.poor {
+  color: #d95c0f;
+  background: #f6ab7c;
+}
+.ItemsList__action {
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Loading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
