@@ -1,363 +1,65 @@
 {
-  "players": [
-    {
-      "id": 0,
-      "name": "Robert",
-      "surname": "Lewandowski",
-      "country": "Poland",
-      "positions": [
-        "ST"
-      ],
-      "age": 32,
-      "rating": 92,
-      "club": "FC Bayern München"
-    },
-    {
-      "id": 1,
-      "name": "Lionel",
-      "surname": "Messi",
-      "country": "Argentina",
-      "positions": [
-        {
-          "0": "RW"
-        },
-        {
-          "1": "ST"
-        },
-        {
-          "2": "CF"
-        }
-      ],
-      "age": 34,
-      "rating": 92,
-      "club": "Paris Saint-Germain"
-    },
-    {
-      "id": 2,
-      "name": "Kylian",
-      "surname": "Mbappe",
-      "country": "France",
-      "positions": [
-        "ST",
-        "LW"
-      ],
-      "age": 22,
-      "rating": 91,
-      "club": "Paris Saint-Germain"
-    },
-    {
-      "id": 3,
-      "name": "Sergio",
-      "surname": "Reguilón",
-      "country": "Spain",
-      "positions": [
-        "LWB",
-        "LB"
-      ],
-      "age": 24,
-      "rating": 80,
-      "club": "Tottenham Hotspur"
-    },
-    {
-      "id": 4,
-      "name": "Manuel",
-      "surname": "Lazzari",
-      "country": "Italy",
-      "positions": [
-        "RB",
-        "RWB",
-        "RM"
-      ],
-      "age": 27,
-      "rating": 79,
-      "club": "Lazio"
-    },
-    {
-      "id": 5,
-      "name": "Nuno",
-      "surname": "Miguel",
-      "country": "Portugal",
-      "positions": [
-        "LW",
-        "LWB",
-        "RW"
-      ],
-      "age": 26,
-      "rating": 78,
-      "club": "Sporting"
-    },
-    {
-      "id": 6,
-      "name": "Kai",
-      "surname": "Havertz",
-      "country": "Germany",
-      "positions": [
-        "CAM",
-        "CF",
-        "ST"
-      ],
-      "age": 22,
-      "rating": 84,
-      "club": "Chelsea"
-    },
-    {
-      "id": 7,
-      "name": "Sérgio",
-      "surname": "Oliveira",
-      "country": "Portugal",
-      "positions": [
-        "CM"
-      ],
-      "age": 29,
-      "rating": 80,
-      "club": "Roma"
-    },
-    {
-      "id": 8,
-      "name": "Matthijs",
-      "surname": "de Ligt",
-      "country": "Netherlands",
-      "positions": [
-        "CB"
-      ],
-      "age": 21,
-      "rating": 85,
-      "club": "Juventus"
-    },
-    {
-      "id": 9,
-      "name": "Karim",
-      "surname": "Adeyemi",
-      "country": "Germany",
-      "positions": [
-        "ST"
-      ],
-      "age": 19,
-      "rating": 74,
-      "club": "FC Red Bull Salzburg"
-    },
-    {
-      "id": 10,
-      "name": "Paulo",
-      "surname": "Dybala",
-      "country": "Argentina",
-      "positions": [
-        "CF",
-        "RW"
-      ],
-      "age": 27,
-      "rating": 87,
-      "club": "Juventus"
-    },
-    {
-      "id": 11,
-      "name": "Clément",
-      "surname": "Lenglet",
-      "country": "France",
-      "positions": [
-        "CB"
-      ],
-      "age": 26,
-      "rating": 80,
-      "club": "FC Barcelona"
-    },
-    {
-      "id": 12,
-      "name": "Mason",
-      "surname": "Mount",
-      "country": "England",
-      "positions": [
-        "CAM",
-        "RW"
-      ],
-      "age": 22,
-      "rating": 83,
-      "club": "Chelsea"
-    },
-    {
-      "id": 13,
-      "name": "Reece",
-      "surname": "James",
-      "country": "England",
-      "positions": [
-        "RWB",
-        "RB"
-      ],
-      "age": 21,
-      "rating": 83,
-      "club": "Chelsea"
-    },
-    {
-      "id": 14,
-      "name": "Olivier",
-      "surname": "Giroud",
-      "country": "France",
-      "positions": [
-        "ST"
-      ],
-      "age": 34,
-      "rating": 81,
-      "club": "AC Milan"
-    },
-    {
-      "id": 15,
-      "name": "Dušan",
-      "surname": "Tadić",
-      "country": "Serbia",
-      "positions": [
-        "LW"
-      ],
-      "age": 32,
-      "rating": 84,
-      "club": "Ajax"
-    },
-    {
-      "id": 16,
-      "name": "Noussair",
-      "surname": "Mazraoui",
-      "country": "Morocco",
-      "positions": [
-        "RB"
-      ],
-      "age": 23,
-      "rating": 82,
-      "club": "Ajax"
-    },
-    {
-      "id": 17,
-      "name": "Richarlison",
-      "surname": "de Andrade",
-      "country": "Brazil",
-      "positions": [
-        "LW",
-        "ST"
-      ],
-      "age": 24,
-      "rating": 80,
-      "club": "Everton"
-    },
-    {
-      "id": 18,
-      "name": "Nathan",
-      "surname": "Aké",
-      "country": "Netherlands",
-      "positions": [
-        "RB",
-        "CB",
-        "LB"
-      ],
-      "age": 26,
-      "rating": 79,
-      "club": "Manchester City"
-    },
-    {
-      "id": 19,
-      "name": "Eduardo",
-      "surname": "Camavinga",
-      "country": "France",
-      "positions": [
-        "CM",
-        "CMD"
-      ],
-      "age": 18,
-      "rating": 79,
-      "club": "Real Madrid CF"
-    },
-    {
-      "id": 20,
-      "name": "Thibaut",
-      "surname": "Courtois",
-      "country": "Belgium",
-      "positions": [
-        "GK"
-      ],
-      "age": 29,
-      "rating": 89,
-      "club": "Real Madrid CF"
-    },
-    {
-      "id": 21,
-      "name": "Julian",
-      "surname": "Huertas",
-      "country": "Colombia",
-      "positions": [
-        "GK"
-      ],
-      "age": 21,
-      "rating": 59,
-      "club": "La Equidad"
-    },
-    {
-      "name": "Serge",
-      "surname": "Gnabry",
-      "country": "England",
-      "club": "Paris Saint-Germain",
-      "position": "CM",
-      "age": "25",
-      "rating": "85",
-      "id": 22
-    },
-    {
-      "name": "Pedro",
-      "surname": "Gonsalves",
-      "country": "Portugal",
-      "club": "Lazio",
-      "position": "CM",
-      "age": "25",
-      "rating": "80",
-      "id": 23
-    },
-    {
-      "name": "Darwin",
-      "surname": "Nuniez",
-      "country": "Portugal",
-      "club": "Paris Saint-Germain",
-      "position": "ST",
-      "age": "20",
-      "rating": "84",
-      "id": 24
-    },
-    {
-      "name": "asdasd",
-      "surname": "sadasdas",
-      "country": "England",
-      "club": "Chelsea",
-      "position": "CAM",
-      "age": "25",
-      "rating": "88",
-      "id": 25
-    },
-    {
-      "name": "Paulo",
-      "surname": "Dybala",
-      "country": "Portugal",
-      "club": "Chelsea",
-      "position": "RF",
-      "age": "22",
-      "rating": "55",
-      "id": 26
-    }
-  ],
   "teams": [
     {
       "id": 0,
       "name": "Chelsea",
-      "league": "English Premier League"
+      "league": "English Premier League (1)",
+      "club_emblem": "club_emblem_0.webp",
+      "coach": "Thomas Tuchel",
+      "stadium": " Stamford Bridge",
+      "stadium_emblem": "stadium_image_0.jpeg",
+      "transfer_budget": "€175M",
+      "players": 33
     },
     {
       "id": 1,
-      "name": "Tottenham Hotspur",
-      "league": "English Premier League"
+      "name": "France",
+      "league": "International",
+      "club_emblem": "club_emblem_1.webp",
+      "coach": "Didier Deschamps",
+      "stadium": "Stade de France",
+      "stadium_emblem": "stadium_image_1.jpeg",
+      "transfer_budget": "-",
+      "players": 26
     },
     {
       "id": 2,
-      "name": "Everton",
-      "league": "English Premier League"
+      "name": "Real Madrid",
+      "league": "Spain Primera Division (1)",
+      "club_emblem": "club_emblem_2.webp",
+      "coach": "Carlos Ancelotti",
+      "stadium": "Santiago Bernabeu",
+      "stadium_emblem": "stadium_image_2.jpeg",
+      "transfer_budget": "€150M",
+      "players": 33
+    }
+  ],
+  "players": [
+    {
+      "id": 0,
+      "name": "Kai",
+      "surename": "Havertz",
+      "age": 22,
+      "date_of_birth": "11.06.1999",
+      "position": "Forward",
+      "rating": 85,
+      "club": "Chelsea",
+      "country": "Germany",
+      "image": "profile_0.webp",
+      "short_number": 29
     },
     {
-      "id": 3,
-      "name": "Manchester City",
-      "league": "English Premier League"
+      "id": 1,
+      "name": "Karim",
+      "surename": "Benzema",
+      "age": 34,
+      "date_of_birth": "19.12.1987",
+      "position": "Forward",
+      "rating": 90,
+      "club": "Real Madrid FC",
+      "country": "France",
+      "image": "profile_1.webp",
+      "short_number": 9
     }
   ]
 }

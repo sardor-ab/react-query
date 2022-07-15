@@ -1,21 +1,21 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Filter from "../../components/Filter/";
-import MainContent from "../../components/MainContent/";
+import React, { useState } from "react";
+import { Routes } from "react-router-dom";
+import Header from "../../components/Header";
 
 const MainPage = () => {
+  const [theme, setTheme] = useState("light");
+  const setContentClassName = (theme) => {
+    return `MainPage__content ${theme}`;
+  };
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={3}>
-        <Grid item md={8} sm={12}>
-          <MainContent />
-        </Grid>
-        <Grid item md={4} sm={0}>
-          <Filter />
-        </Grid>
-      </Grid>
-    </Box>
+    <div className="MainPage">
+      <div className="MainPage__header">
+        <Header theme={theme} setTheme={setTheme} />
+      </div>
+      <div className={setContentClassName(theme)}>
+        <Routes></Routes>
+      </div>
+    </div>
   );
 };
 
