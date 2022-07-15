@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.Header__content-logo {
+  padding: 10px 0;
+}
+
 .Header__content-center {
   display: block;
 }
@@ -155,6 +159,14 @@
 }
 
 @media screen and (max-width: 425px) {
+  .Header__content {
+    width: 100%;
+  }
+
+  .Header__content-logo {
+    margin-left: 5%;
+  }
+
   .Header__sideMenu-content {
     width: 100%;
   }
