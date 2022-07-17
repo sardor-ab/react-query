@@ -5,7 +5,7 @@
 }
 
 .Header__content {
-  width: 80%;
+  width: 90%;
   display: flex;
   margin: 0 auto;
   /* padding: 10px 0; */
@@ -23,6 +23,10 @@
 .Custom__link {
   font-weight: bold;
   text-decoration: none !important;
+}
+
+.Link__active {
+  color: #fff !important;
 }
 
 .Header__content-logo-link {
@@ -85,6 +89,15 @@
 @media screen and (max-width: 767px) {
   .Header__content {
     justify-content: space-between;
+    width: 100%;
+  }
+
+  .Header__content-logo {
+    margin-left: 1%;
+  }
+
+  .Header__sideMenu-content {
+    width: 100%;
   }
 
   .Header__content-logo-link {
@@ -107,8 +120,10 @@
     display: block;
     width: 100%;
     height: calc(100% - 60px);
+    background-color: rgba(232, 232, 232, 0.5);
     /* right: -1000px; */
     position: absolute;
+    z-index: 1;
   }
 
   .open-true {
@@ -159,10 +174,6 @@
 }
 
 @media screen and (max-width: 425px) {
-  .Header__content {
-    width: 100%;
-  }
-
   .Header__content-logo {
     margin-left: 5%;
   }

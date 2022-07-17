@@ -61,5 +61,21 @@
       "image": "profile_1.webp",
       "short_number": 9
     }
+  ],
+  "users": [
+    {
+      "id": 0,
+      "name": "Sardor",
+      "surename": "Alijanov",
+      "admin": true,
+      "email": "alijanov.sb@gmail.com"
+    },
+    {
+      "id": 1,
+      "name": "Sardor",
+      "surename": "Alijanov",
+      "admin": false,
+      "email": "sardor.alijanov.1999@gmail.com"
+    }
   ]
 }

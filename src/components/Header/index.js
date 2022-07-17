@@ -85,7 +85,7 @@ const Header = ({ theme = "dark", setTheme }) => {
   const getLinkClassName = (path) => {
     const linkState = location.pathname === path ? "active" : "";
 
-    return `Header__content-center-link Custom__link ${linkState}`;
+    return `Header__content-center-link Custom__link Link__${linkState}`;
   };
 
   const getSideMenuClassName = () => {
@@ -94,6 +94,11 @@ const Header = ({ theme = "dark", setTheme }) => {
 
   const getToggleClassName = () => {
     return `Header__sideMenuToggle active-${sideMenuOpen}`;
+  };
+
+  const handleToggleMenu = () => {
+    setSideMenuOpen(!sideMenuOpen);
+    document.body.style.overflow = sideMenuOpen ? "auto" : "hidden";
   };
 
   return (
@@ -142,7 +147,7 @@ const Header = ({ theme = "dark", setTheme }) => {
         </div>
 
         <div className={getToggleClassName()}>
-          <IconButton onClick={() => setSideMenuOpen(!sideMenuOpen)}>
+          <IconButton onClick={handleToggleMenu}>
             {sideMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
         </div>
