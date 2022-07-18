@@ -1,9 +1,24 @@
 {
+  "leagues": [
+    {
+      "id": 0,
+      "name": "International"
+    },
+    {
+      "id": 1,
+      "name": "English Premier League (1)"
+    },
+    {
+      "id": 2,
+      "name": "Spain Primera Division (1)"
+    }
+  ],
   "teams": [
     {
       "id": 0,
       "name": "Chelsea",
       "league": "English Premier League (1)",
+      "league_id": 1,
       "club_emblem": "club_emblem_0.webp",
       "coach": "Thomas Tuchel",
       "stadium": " Stamford Bridge",
@@ -15,6 +30,7 @@
       "id": 1,
       "name": "France",
       "league": "International",
+      "league_id": 0,
       "club_emblem": "club_emblem_1.webp",
       "coach": "Didier Deschamps",
       "stadium": "Stade de France",
@@ -26,6 +42,7 @@
       "id": 2,
       "name": "Real Madrid",
       "league": "Spain Primera Division (1)",
+      "league_id": 2,
       "club_emblem": "club_emblem_2.webp",
       "coach": "Carlos Ancelotti",
       "stadium": "Santiago Bernabeu",
@@ -60,6 +77,24 @@
       "country": "France",
       "image": "profile_1.webp",
       "short_number": 9
+    }
+  ],
+  "positions": [
+    {
+      "id": 0,
+      "name": "Forward"
+    },
+    {
+      "id": 1,
+      "name": "Midfielder"
+    },
+    {
+      "id": 2,
+      "name": "Defender"
+    },
+    {
+      "id": 3,
+      "name": "Goalkeeper"
     }
   ],
   "users": [

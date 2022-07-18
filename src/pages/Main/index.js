@@ -10,22 +10,12 @@ const PLAYERS_DATA = {
   dataName: "player",
   buttonData: {
     label: "New Player",
-    action: () => {
-      console.log("New Player");
-    },
+    action: () => {},
   },
   filterData: [
     {
-      title: "FILTER BY LEAGUE",
-      search_param: "leagues",
-    },
-    {
       title: "FILTER BY CLUB",
       search_param: "teams",
-    },
-    {
-      title: "FILTER BY POSITION",
-      search_param: "positions",
     },
   ],
   tableRows: [

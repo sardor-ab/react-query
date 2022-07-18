@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
-import Filters from "../../components/Filters";
 import CustomTable from "../../components/Table";
 import SearchBar from "../../components/SearchBar";
 import "./index.css";
+import FilterComponent from "../../components/Filters";
 
 const GeneralInfo = ({ props }) => {
   const { dataName, buttonData, filterData, tableRows } = props;
+  const [query, setQuery] = useState({
+    club: "",
+    position: "",
+  });
 
   // There is a problem, when the data is loaded, it doubles, so I can see the data in the console twice.
 
@@ -45,7 +49,7 @@ const GeneralInfo = ({ props }) => {
         </div>
       </div>
       <div className="GeneralInfo__content">
-        <Filters filterData={filterData} />
+        <FilterComponent dataName={dataName} filterData={filterData} />
         <CustomTable />
       </div>
     </div>

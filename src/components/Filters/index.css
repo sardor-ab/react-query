@@ -1,0 +1,55 @@
+.Filters {
+  display: flex;
+  border: 1px solid #0000001f;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.Filters__left {
+  display: flex;
+  width: 70%;
+}
+
+.Filters__right {
+  width: 30%;
+  display: flex;
+  flex-flow: row-reverse;
+}
+
+.Filter {
+  width: 100%;
+}
+
+.Filter__league,
+.Custom__filter > .MuiInput-root {
+  width: 100%;
+}
+
+.Filter__league,
+.Custom__filter > .MuiInputBase-root {
+  font-weight: bold;
+  color: #37003c;
+  width: 180px;
+}
+
+.Filter__league,
+.Custom__filter > .MuiInputLabel-root {
+  font-style: italic;
+  color: #37003c;
+}
+
+.Laptop__down {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  .Laptop__up {
+    display: none;
+  }
+
+  .Laptop__down {
+    display: block;
+    color: #37003c;
+    font-weight: 400;
+  }
+}
