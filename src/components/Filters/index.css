@@ -10,6 +10,10 @@
   width: 70%;
 }
 
+.Filters__left-filter {
+  width: 180px;
+}
+
 .Filters__right {
   width: 30%;
   display: flex;

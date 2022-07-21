@@ -1,35 +1,19 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
 import CustomTable from "../../components/Table";
 import SearchBar from "../../components/SearchBar";
-import "./index.css";
 import FilterComponent from "../../components/Filters";
+import "./index.css";
 
 const GeneralInfo = ({ props }) => {
-  const { dataName, buttonData, filterData, tableRows } = props;
+  const { dataName, buttonData, tableRows } = props;
   const [query, setQuery] = useState({
     club: "",
     position: "",
   });
 
-  // There is a problem, when the data is loaded, it doubles, so I can see the data in the console twice.
-
-  const ColorButton = styled(Button)(({ theme }) => ({
-    "&:hover": {
-      background: "#ff2882",
-      border: "1px solid #efefef",
-      color: "#fff",
-    },
-    borderRadius: "3px",
-    lineHeight: "3.8rem",
-    background: "#fff",
-    border: "1px solid #efefef",
-    color: "#2f2f2f",
-    padding: "0 1rem",
-    transition: ".2s",
-    fontWeight: "400",
-  }));
+  const handleQueryChange = (stateName, stateValue) => {
+    setQuery({ ...query, [stateName]: stateValue });
+  };
 
   return (
     <div className="GeneralInfo">
@@ -39,18 +23,18 @@ const GeneralInfo = ({ props }) => {
         </span>
         <div className="GeneralInfo__header-actions">
           <SearchBar placeholder={dataName.toUpperCase()} />
-          <ColorButton
+
+          <button
             className="GeneralInfo__header-actions-button"
-            variant="outlined"
             onClick={buttonData.action}
           >
             {buttonData.label}
-          </ColorButton>
+          </button>
         </div>
       </div>
       <div className="GeneralInfo__content">
-        <FilterComponent dataName={dataName} filterData={filterData} />
-        <CustomTable />
+        <FilterComponent handleQueryChange={handleQueryChange} />
+        <CustomTable query={query} />
       </div>
     </div>
   );

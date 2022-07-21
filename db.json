@@ -1,24 +1,24 @@
 {
   "leagues": [
     {
-      "id": 0,
+      "id": 1,
       "name": "International"
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "English Premier League (1)"
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "Spain Primera Division (1)"
     }
   ],
   "teams": [
     {
-      "id": 0,
+      "id": 1,
       "name": "Chelsea",
       "league": "English Premier League (1)",
-      "league_id": 1,
+      "league_id": 2,
       "club_emblem": "club_emblem_0.webp",
       "coach": "Thomas Tuchel",
       "stadium": " Stamford Bridge",
@@ -27,10 +27,10 @@
       "players": 33
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "France",
       "league": "International",
-      "league_id": 0,
+      "league_id": 1,
       "club_emblem": "club_emblem_1.webp",
       "coach": "Didier Deschamps",
       "stadium": "Stade de France",
@@ -39,10 +39,10 @@
       "players": 26
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "Real Madrid",
       "league": "Spain Primera Division (1)",
-      "league_id": 2,
+      "league_id": 3,
       "club_emblem": "club_emblem_2.webp",
       "coach": "Carlos Ancelotti",
       "stadium": "Santiago Bernabeu",
@@ -81,19 +81,19 @@
   ],
   "positions": [
     {
-      "id": 0,
+      "id": 1,
       "name": "Forward"
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "Midfielder"
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "Defender"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "Goalkeeper"
     }
   ],
@@ -103,14 +103,16 @@
       "name": "Sardor",
       "surename": "Alijanov",
       "admin": true,
-      "email": "alijanov.sb@gmail.com"
+      "email": "alijanov.sb@gmail.com",
+      "password": "12321"
     },
     {
       "id": 1,
       "name": "Sardor",
       "surename": "Alijanov",
       "admin": false,
-      "email": "sardor.alijanov.1999@gmail.com"
+      "email": "sardor.alijanov.1999@gmail.com",
+      "password": "12321"
     }
   ]
 }

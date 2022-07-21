@@ -1,169 +1,73 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useQuery } from "react-query";
-import {
-  Button,
-  Select,
-  Divider,
-  MenuItem,
-  InputLabel,
-  LinearProgress,
-  CircularProgress,
-} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Button, Divider } from "@mui/material";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import BaseFilter from "./BaseFilter";
+import {
+  useFetchLeaguesData,
+  useFetchPositionsData,
+  useFetchTeams,
+} from "../../hooks/hooks";
 import "./index.css";
 
-const fetchOptions = async (filter, params) => {
-  const res = await axios.get(`http://localhost:3001/${filter}?${params}`);
+const FilterComponent = ({ handleQueryChange }) => {
+  const [league, setLeague] = useState(0);
+  const [team, setTeam] = useState(0);
+  const [position, setPosition] = useState(0);
+  const [shouldUpdate, setShouldUpdate] = useState(true);
 
-  return res.data;
-};
+  const leaguesData = useFetchLeaguesData();
+  const teamsData = useFetchTeams(league, shouldUpdate, setShouldUpdate);
+  const positionsData = useFetchPositionsData();
 
-const LeagueFilter = ({ league, handleLeagueChange }) => {
-  const { data, isLoading, error } = useQuery(["leagues"], () =>
-    fetchOptions("leagues", "")
-  );
-
-  if (isLoading) {
-    return <CircularProgress />;
-  }
-
-  if (error) {
-    return <div>Error!</div>;
-  }
-
-  return (
-    <div className="Filter__league Custom__filter">
-      <InputLabel className="Filter__league-title">FILTER BY LEAGUE</InputLabel>
-      <Select
-        value={league}
-        label="FILTER BY LEAGUE"
-        onChange={handleLeagueChange}
-        variant="standard"
-      >
-        {data.map((league, index) => {
-          return (
-            <MenuItem key={index} value={league.id}>
-              {league.name}
-            </MenuItem>
-          );
-        })}
-      </Select>
-    </div>
-  );
-};
-
-const TeamFilter = ({ league, option, handleOptionChange }) => {
-  const { data, isLoading, error } = useQuery(["teams", league], () =>
-    fetchOptions("teams", "league_id_like=" + league)
-  );
-
-  if (isLoading) {
-    return <LinearProgress />;
-  }
-
-  if (error) {
-    return <div>Error!</div>;
-  }
-
-  return (
-    <div className="Filter__field Custom__filter">
-      <InputLabel className="Filter__field-title Custom__filter-title">
-        FILTER BY TEAMS
-      </InputLabel>
-      <Select
-        value={option}
-        // label="FILTER BY LEAGUE"
-        onChange={handleOptionChange}
-        variant="standard"
-      >
-        {data.map((option, index) => {
-          return (
-            <MenuItem key={index} value={option.id}>
-              {option.name}
-            </MenuItem>
-          );
-        })}
-      </Select>
-    </div>
-  );
-};
-
-const PositionFilter = ({ position, handlePositionChange }) => {
-  const { data, isLoading, error } = useQuery(["positions"], () =>
-    fetchOptions("positions", "")
-  );
-
-  if (isLoading) {
-    return <CircularProgress />;
-  }
-
-  if (error) {
-    return <div>Error!</div>;
-  }
-
-  return (
-    <div className="Filter__field Custom__filter">
-      <InputLabel className="Filter__field-title Custom__filter-title">
-        FILTER BY POSITIONS
-      </InputLabel>
-      <Select
-        value={position}
-        // label="FILTER BY LEAGUE"
-        onChange={handlePositionChange}
-        variant="standard"
-      >
-        {data.map((option, index) => {
-          return (
-            <MenuItem key={index} value={option.id}>
-              {option.name}
-            </MenuItem>
-          );
-        })}
-      </Select>
-    </div>
-  );
-};
-
-const FilterComponent = ({ dataName, filterData }) => {
-  const [option, setOption] = useState("");
-  const [league, setLeague] = useState("");
-  const [position, setPosition] = useState("");
-
-  const handleOptionChange = (event) => {
-    setOption(event.target.value);
-  };
+  useEffect(() => {
+    setTeam(0);
+  }, [league]);
 
   const handleLeagueChange = (event) => {
     setLeague(event.target.value);
+    setShouldUpdate(true);
+  };
+
+  const handleTeamChange = (event) => {
+    setTeam(event.target.value);
+    handleQueryChange("club", event.target.value);
   };
 
   const handlePositionChange = (event) => {
     setPosition(event.target.value);
+    handleQueryChange("position", event.target.value);
+  };
+
+  const handleReset = () => {
+    setLeague(0);
+    setTeam(0);
+    setPosition(0);
+    handleQueryChange("club", "");
+    handleQueryChange("position", "");
   };
 
   return (
     <div className="Filters">
       <div className="Filters__left Laptop__up">
-        <LeagueFilter league={league} handleLeagueChange={handleLeagueChange} />
-        <Divider orientation="vertical" flexItem />
-        {/* {dataName === "player" && (
-          <CustomFilter
-            dataName="teams"
-            league={league}
-            option={option}
-            handleOptionChange={handleOptionChange}
-          />
-        )} */}
-        <TeamFilter
-          league={league}
-          option={option}
-          handleOptionChange={handleOptionChange}
+        <BaseFilter
+          label={"FILTER BY LEAGUES"}
+          value={league}
+          data={leaguesData}
+          handleValueChange={handleLeagueChange}
         />
         <Divider orientation="vertical" flexItem />
-        <PositionFilter
-          position={position}
-          handlePositionChange={handlePositionChange}
+        <BaseFilter
+          label={"FILTER BY CLUBS"}
+          value={team}
+          data={teamsData}
+          handleValueChange={handleTeamChange}
+        />
+        <Divider orientation="vertical" flexItem />
+        <BaseFilter
+          label={"FILTER BY POSITIONS"}
+          value={position}
+          data={positionsData}
+          handleValueChange={handlePositionChange}
         />
       </div>
       <div className="Filters__right Laptop__up">
@@ -172,6 +76,7 @@ const FilterComponent = ({ dataName, filterData }) => {
           color="primary"
           startIcon={<RestartAltIcon />}
           className="Filters__right__button"
+          onClick={handleReset}
         >
           RESET FILTERS
         </Button>

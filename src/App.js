@@ -4,7 +4,15 @@ import MainPage from "./pages/Main";
 import "./App.css";
 
 // Create a client
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 0,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   return (
