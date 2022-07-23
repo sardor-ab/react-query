@@ -1,16 +1,20 @@
 {
   "leagues": [
     {
-      "id": 1,
-      "name": "International"
-    },
-    {
       "id": 2,
       "name": "English Premier League (1)"
     },
     {
       "id": 3,
       "name": "Spain Primera Division (1)"
+    },
+    {
+      "id": 4,
+      "name": "Germany 1. Bundesliga (1)"
+    },
+    {
+      "id": 5,
+      "name": "French Ligue 1 (1)"
     }
   ],
   "teams": [
@@ -19,7 +23,7 @@
       "name": "Chelsea",
       "league": "English Premier League (1)",
       "league_id": 2,
-      "club_emblem": "club_emblem_0.webp",
+      "image": "club_emblem_0.webp",
       "coach": "Thomas Tuchel",
       "stadium": " Stamford Bridge",
       "stadium_emblem": "stadium_image_0.jpeg",
@@ -27,27 +31,75 @@
       "players": 33
     },
     {
-      "id": 2,
-      "name": "France",
-      "league": "International",
-      "league_id": 1,
-      "club_emblem": "club_emblem_1.webp",
-      "coach": "Didier Deschamps",
-      "stadium": "Stade de France",
-      "stadium_emblem": "stadium_image_1.jpeg",
-      "transfer_budget": "-",
-      "players": 26
-    },
-    {
       "id": 3,
       "name": "Real Madrid",
       "league": "Spain Primera Division (1)",
       "league_id": 3,
-      "club_emblem": "club_emblem_2.webp",
+      "image": "club_emblem_2.webp",
       "coach": "Carlos Ancelotti",
       "stadium": "Santiago Bernabeu",
       "stadium_emblem": "stadium_image_2.jpeg",
       "transfer_budget": "€150M",
+      "players": 33
+    },
+    {
+      "id": 4,
+      "name": "FC Barcelona",
+      "league": "Spain Primera Division (1)",
+      "league_id": 3,
+      "image": "club_emblem_2.webp",
+      "coach": "Xavier Hernández Creus",
+      "stadium": "Spotify Camp Nou",
+      "stadium_emblem": "stadium_image_2.jpeg",
+      "transfer_budget": "€130M",
+      "players": 33
+    },
+    {
+      "id": 5,
+      "name": "Arsenal",
+      "league": "English Premier League (1)",
+      "league_id": 2,
+      "image": "club_emblem_0.webp",
+      "coach": "Mikel Arteta",
+      "stadium": " Emirates Stadium",
+      "stadium_emblem": "stadium_image_0.jpeg",
+      "transfer_budget": "€105M",
+      "players": 33
+    },
+    {
+      "id": 2,
+      "name": "Real Madrid",
+      "league": "Spain Primera Division (1)",
+      "league_id": 3,
+      "image": "club_emblem_2.webp",
+      "coach": "Carlos Ancelotti",
+      "stadium": "Santiago Bernabeu",
+      "stadium_emblem": "stadium_image_2.jpeg",
+      "transfer_budget": "€150M",
+      "players": 33
+    },
+    {
+      "id": 6,
+      "name": "Sevilla FC",
+      "league": "Spain Primera Division (1)",
+      "league_id": 3,
+      "image": "club_emblem_2.webp",
+      "coach": "Julen Lopetegui",
+      "stadium": "Ramon Sanchez-Pizjuan Stadium",
+      "stadium_emblem": "stadium_image_2.jpeg",
+      "transfer_budget": "130M",
+      "players": 33
+    },
+    {
+      "id": 7,
+      "name": "Paris Saint-Germain",
+      "league": "French Ligue 1 (1)",
+      "league_id": 5,
+      "image": "club_emblem_2.webp",
+      "coach": "Christophe Galtier",
+      "stadium": "Parc des Princes",
+      "stadium_emblem": "stadium_image_2.jpeg",
+      "transfer_budget": "€160M",
       "players": 33
     }
   ],
@@ -55,28 +107,122 @@
     {
       "id": 0,
       "name": "Kai",
-      "surename": "Havertz",
+      "surname": "Havertz",
       "age": 22,
       "date_of_birth": "11.06.1999",
       "position": "Forward",
+      "position_id": 1,
       "rating": 85,
       "club": "Chelsea",
+      "club_id": 1,
       "country": "Germany",
-      "image": "profile_0.webp",
+      "image": "profile_0.png",
       "short_number": 29
     },
     {
       "id": 1,
       "name": "Karim",
-      "surename": "Benzema",
+      "surname": "Benzema",
       "age": 34,
       "date_of_birth": "19.12.1987",
       "position": "Forward",
+      "position_id": 1,
       "rating": 90,
       "club": "Real Madrid FC",
+      "club_id": 3,
       "country": "France",
-      "image": "profile_1.webp",
+      "image": "./images/players/faces/profile_1.webp",
       "short_number": 9
+    },
+    {
+      "id": 2,
+      "name": "N'Golo",
+      "surname": "Kanté",
+      "age": 31,
+      "date_of_birth": "29.03.1991",
+      "position": "Midfielder",
+      "position_id": 2,
+      "rating": 90,
+      "club": "Chelsea",
+      "club_id": 1,
+      "country": "France",
+      "image": "./images/players/faces/profile_2.webp",
+      "short_number": 7
+    },
+    {
+      "id": 3,
+      "name": "Jules",
+      "surname": "Koundé",
+      "age": 22,
+      "date_of_birth": "12.11.1998",
+      "position": "Defender",
+      "position_id": 3,
+      "rating": 83,
+      "club": "Sevilla FC",
+      "club_id": 6,
+      "country": "France",
+      "image": "profile_3.png",
+      "short_number": 6
+    },
+    {
+      "id": 4,
+      "name": "Emile",
+      "surname": "Smith-Rowe",
+      "age": 20,
+      "date_of_birth": "28.07.2000",
+      "position": "Defender",
+      "position_id": 3,
+      "rating": 80,
+      "club": "Arsenal",
+      "club_id": 5,
+      "country": "England",
+      "image": "./images/players/faces/profile_1.webp",
+      "short_number": 10
+    },
+    {
+      "id": 5,
+      "name": "Lionel",
+      "surname": "Messi",
+      "age": 34,
+      "date_of_birth": "24.06.1987",
+      "position": "Forward",
+      "position_id": 1,
+      "rating": 92,
+      "club": "Paris Saint-Germain",
+      "club_id": 7,
+      "country": "Argentina",
+      "image": "./images/players/faces/profile_2.webp",
+      "short_number": 30
+    },
+    {
+      "id": 6,
+      "name": "Marco",
+      "surname": "Verratti",
+      "age": 28,
+      "date_of_birth": "05.11.1992",
+      "position": "Midfielder",
+      "position_id": 2,
+      "rating": 87,
+      "club": "Paris Saint-Germain",
+      "club_id": 7,
+      "country": "Italy",
+      "image": "profile_0.png",
+      "short_number": 6
+    },
+    {
+      "id": 7,
+      "name": "Édouard",
+      "surname": "Mendy",
+      "age": 29,
+      "date_of_birth": "01.03.1992",
+      "position": "Goalkeeper",
+      "position_id": 4,
+      "rating": 86,
+      "club": "Chelsea",
+      "club_id": 1,
+      "country": "Senegal",
+      "image": "profile_0.png",
+      "short_number": 16
     }
   ],
   "positions": [

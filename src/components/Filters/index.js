@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Button, Divider } from "@mui/material";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import BaseFilter from "./BaseFilter";
@@ -9,41 +9,31 @@ import {
 } from "../../hooks/hooks";
 import "./index.css";
 
-const FilterComponent = ({ handleQueryChange }) => {
-  const [league, setLeague] = useState(0);
-  const [team, setTeam] = useState(0);
-  const [position, setPosition] = useState(0);
-  const [shouldUpdate, setShouldUpdate] = useState(true);
+const FilterComponent = ({
+  queryParams,
+  handleQueryParamsChange,
+  handleReset,
+}) => {
+  const { league, club, position } = queryParams;
 
   const leaguesData = useFetchLeaguesData();
-  const teamsData = useFetchTeams(league, shouldUpdate, setShouldUpdate);
+  const teamsData = useFetchTeams(league);
   const positionsData = useFetchPositionsData();
 
   useEffect(() => {
-    setTeam(0);
+    handleQueryParamsChange("club", 0);
   }, [league]);
 
   const handleLeagueChange = (event) => {
-    setLeague(event.target.value);
-    setShouldUpdate(true);
+    handleQueryParamsChange("league", event.target.value);
   };
 
   const handleTeamChange = (event) => {
-    setTeam(event.target.value);
-    handleQueryChange("club", event.target.value);
+    handleQueryParamsChange("club", event.target.value);
   };
 
   const handlePositionChange = (event) => {
-    setPosition(event.target.value);
-    handleQueryChange("position", event.target.value);
-  };
-
-  const handleReset = () => {
-    setLeague(0);
-    setTeam(0);
-    setPosition(0);
-    handleQueryChange("club", "");
-    handleQueryChange("position", "");
+    handleQueryParamsChange("position", event.target.value);
   };
 
   return (
@@ -58,7 +48,7 @@ const FilterComponent = ({ handleQueryChange }) => {
         <Divider orientation="vertical" flexItem />
         <BaseFilter
           label={"FILTER BY CLUBS"}
-          value={team}
+          value={club}
           data={teamsData}
           handleValueChange={handleTeamChange}
         />

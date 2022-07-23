@@ -6,13 +6,22 @@ import "./index.css";
 
 const GeneralInfo = ({ props }) => {
   const { dataName, buttonData, tableRows } = props;
-  const [query, setQuery] = useState({
-    club: "",
-    position: "",
+  const [queryParams, setQueryParams] = useState({
+    league: 0,
+    club: 0,
+    position: 0,
   });
 
-  const handleQueryChange = (stateName, stateValue) => {
-    setQuery({ ...query, [stateName]: stateValue });
+  const handleQueryParamsChange = (queryParamName, queryParamValue) => {
+    setQueryParams({ ...queryParams, [queryParamName]: queryParamValue });
+  };
+
+  const handleReset = () => {
+    setQueryParams({
+      league: 0,
+      club: 0,
+      position: 0,
+    });
   };
 
   return (
@@ -33,8 +42,16 @@ const GeneralInfo = ({ props }) => {
         </div>
       </div>
       <div className="GeneralInfo__content">
-        <FilterComponent handleQueryChange={handleQueryChange} />
-        <CustomTable query={query} />
+        <FilterComponent
+          queryParams={queryParams}
+          handleQueryParamsChange={handleQueryParamsChange}
+          handleReset={handleReset}
+        />
+        <CustomTable
+          queryParams={queryParams}
+          tableRows={tableRows}
+          handleQueryParamsChange={handleQueryParamsChange}
+        />
       </div>
     </div>
   );

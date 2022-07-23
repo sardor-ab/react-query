@@ -1,0 +1,26 @@
+.Table {
+  padding: 60px 0;
+  /* max-height: 250px; */
+  /* padding: 10px; */
+  /* border: 1px solid #0000001f; */
+}
+
+.TableCell__name {
+  display: flex;
+  align-items: center;
+}
+
+.TableCell__link {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #242424;
+  text-decoration: none;
+}
+
+.TableCell__link:hover {
+  text-decoration: underline;
+}
+
+.Link__name {
+  margin-left: 10px;
+}

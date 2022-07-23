@@ -10,36 +10,10 @@
   width: 70%;
 }
 
-.Filters__left-filter {
-  width: 180px;
-}
-
 .Filters__right {
   width: 30%;
   display: flex;
   flex-flow: row-reverse;
-}
-
-.Filter {
-  width: 100%;
-}
-
-.Filter__league,
-.Custom__filter > .MuiInput-root {
-  width: 100%;
-}
-
-.Filter__league,
-.Custom__filter > .MuiInputBase-root {
-  font-weight: bold;
-  color: #37003c;
-  width: 180px;
-}
-
-.Filter__league,
-.Custom__filter > .MuiInputLabel-root {
-  font-style: italic;
-  color: #37003c;
 }
 
 .Laptop__down {

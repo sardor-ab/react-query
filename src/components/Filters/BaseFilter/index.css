@@ -1,5 +1,5 @@
 .Filter {
-  width: 190px;
+  width: 150px;
 }
 
 .Filter > .MuiInput-root {
@@ -8,11 +8,11 @@
 
 .Filter > .MuiInputLabel-root {
   font-style: italic;
+  font-size: 12px;
   color: #37003c;
 }
 
 .Filter > .MuiInputBase-root {
   font-weight: bold;
   color: #37003c;
-  width: 180px;
 }
