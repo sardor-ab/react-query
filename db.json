@@ -1,6 +1,10 @@
 {
   "leagues": [
     {
+      "id": 1,
+      "name": "Germany 1. Bundesliga (1)"
+    },
+    {
       "id": 2,
       "name": "English Premier League (1)"
     },
@@ -9,12 +13,12 @@
       "name": "Spain Primera Division (1)"
     },
     {
-      "id": 4,
-      "name": "Germany 1. Bundesliga (1)"
-    },
-    {
       "id": 5,
       "name": "French Ligue 1 (1)"
+    },
+    {
+      "id": 6,
+      "name": "Italian Serie A (1)"
     }
   ],
   "teams": [
@@ -67,18 +71,6 @@
       "players": 33
     },
     {
-      "id": 2,
-      "name": "Real Madrid",
-      "league": "Spain Primera Division (1)",
-      "league_id": 3,
-      "image": "club_emblem_2.webp",
-      "coach": "Carlos Ancelotti",
-      "stadium": "Santiago Bernabeu",
-      "stadium_emblem": "stadium_image_2.jpeg",
-      "transfer_budget": "€150M",
-      "players": 33
-    },
-    {
       "id": 6,
       "name": "Sevilla FC",
       "league": "Spain Primera Division (1)",
@@ -100,6 +92,54 @@
       "stadium": "Parc des Princes",
       "stadium_emblem": "stadium_image_2.jpeg",
       "transfer_budget": "€160M",
+      "players": 33
+    },
+    {
+      "id": 8,
+      "name": "A.S. Roma",
+      "league": "Italy Serie A (1)",
+      "league_id": 6,
+      "image": "club_emblem_2.webp",
+      "coach": "Jose Mourinho",
+      "stadium": "Stadio Olimpico",
+      "stadium_emblem": "stadium_image_2.jpeg",
+      "transfer_budget": "€20M",
+      "players": 33
+    },
+    {
+      "id": 9,
+      "name": "S.S. Lazio",
+      "league": "Italy Serie A (1)",
+      "league_id": 6,
+      "image": "club_emblem_2.webp",
+      "coach": "Maurizio Sarri",
+      "stadium": "Stadion Olympik",
+      "stadium_emblem": "stadium_image_2.jpeg",
+      "transfer_budget": "€30M",
+      "players": 33
+    },
+    {
+      "id": 10,
+      "name": "S.S.C. Napoli",
+      "league": "Italy Serie A (1)",
+      "league_id": 6,
+      "image": "club_emblem_2.webp",
+      "coach": "Luciano Spalletti",
+      "stadium": "Diego Armando Maradona Stadium",
+      "stadium_emblem": "stadium_image_2.jpeg",
+      "transfer_budget": "€30M",
+      "players": 33
+    },
+    {
+      "id": 11,
+      "name": "FC Bayern München",
+      "league": "Germany 1. Bundesliga (1)",
+      "league_id": 1,
+      "image": "club_emblem_2.webp",
+      "coach": "Julian Nagelsmann",
+      "stadium": "Allianz Arena",
+      "stadium_emblem": "stadium_image_2.jpeg",
+      "transfer_budget": "€130M",
       "players": 33
     }
   ],
@@ -223,6 +263,96 @@
       "country": "Senegal",
       "image": "profile_0.png",
       "short_number": 16
+    },
+    {
+      "id": 8,
+      "name": "Nicolò",
+      "surname": "Zaniolo",
+      "age": 21,
+      "date_of_birth": "02.07.1999",
+      "position": "Forward",
+      "position_id": 1,
+      "rating": 80,
+      "club": "A.S. Roma",
+      "club_id": 8,
+      "country": "Italy",
+      "image": "profile_0.png",
+      "short_number": 22
+    },
+    {
+      "id": 9,
+      "name": "Luiz",
+      "surname": "Frello",
+      "age": 29,
+      "date_of_birth": "20.12.1991",
+      "position": "Midfielder",
+      "position_id": 2,
+      "rating": 85,
+      "club": "Chelsea",
+      "club_id": 1,
+      "country": "Italy",
+      "image": "profile_0.png",
+      "short_number": 5
+    },
+    {
+      "id": 10,
+      "name": "Pablo",
+      "surname": "Gavira",
+      "age": 16,
+      "date_of_birth": "05.08.2004",
+      "position": "Midfielder",
+      "position_id": 2,
+      "rating": 77,
+      "club": "FC Barcelona",
+      "club_id": 4,
+      "country": "Spain",
+      "image": "profile_0.png",
+      "short_number": 30
+    },
+    {
+      "id": 11,
+      "name": "Sergej",
+      "surname": "Milinković-Savić",
+      "age": 26,
+      "date_of_birth": "27.02.1997",
+      "position": "Midfielder",
+      "position_id": 2,
+      "rating": 85,
+      "club": "S.S. Lazio",
+      "club_id": 9,
+      "country": "Serbia",
+      "image": "profile_0.png",
+      "short_number": 21
+    },
+    {
+      "id": 12,
+      "name": "Kalidou",
+      "surname": "Koulibaly",
+      "age": 30,
+      "date_of_birth": "20.06.1991",
+      "position": "Defender",
+      "position_id": 3,
+      "rating": 86,
+      "club": "S.S.C. Napoli",
+      "club_id": 10,
+      "country": "Senegal",
+      "image": "profile_0.png",
+      "short_number": 26
+    },
+    {
+      "id": 13,
+      "name": "Robert",
+      "surname": "Lewandowski",
+      "age": 32,
+      "date_of_birth": "21.08.1988",
+      "position": "Forward",
+      "position_id": 1,
+      "rating": 92,
+      "club": "FC Bayern München",
+      "club_id": 11,
+      "country": "Poland",
+      "image": "./images/players/faces/profile_1.webp",
+      "short_number": 9
     }
   ],
   "positions": [

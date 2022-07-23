@@ -48,26 +48,28 @@ export const useFetchPlayers = (league, club, position) => {
     position_ids.push(position.id);
   });
 
-  const param_clubs_id = queryString.stringify({ club_id_like: club_ids });
+  const param_clubs_id = queryString.stringify({ club_id: club_ids });
   param_club += param_clubs_id;
 
   if (club) {
-    param_club = `club_id_like=${club}`;
+    param_club = `club_id=${club}`;
   }
 
   const param_positions_id = queryString.stringify({
-    position_id_like: position_ids,
+    position_id: position_ids,
   });
   param_position += param_positions_id;
 
   if (position) {
-    param_position = `position_id_like=${position}`;
+    param_position = `position_id=${position}`;
   }
 
   params = `${param_club}&${param_position}`;
 
   const res = useQuery(["players", param_club, param_position], () => {
-    return axios.get(`http://localhost:3001/players?${params}`);
+    return axios.get(
+      `http://localhost:3001/players?${params}&_limit=6&_page=1`
+    );
   });
 
   return res;
