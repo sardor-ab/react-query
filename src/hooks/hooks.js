@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useMutation, useQuery } from "react-query";
+import { useInfiniteQuery, useMutation, useQuery } from "react-query";
 import queryString from "query-string";
 
 const fetcher = async (data) => {
@@ -20,7 +20,7 @@ export const useFetchTeams = (league = 0) => {
   return res;
 };
 
-export const useFetchPlayers = (league, club, position) => {
+export const useFetchPlayers = (league, club, position, page = 1) => {
   let params = "";
   let param_league = "";
   let param_club = "";
@@ -66,11 +66,22 @@ export const useFetchPlayers = (league, club, position) => {
 
   params = `${param_club}&${param_position}`;
 
-  const res = useQuery(["players", param_club, param_position], () => {
-    return axios.get(
-      `http://localhost:3001/players?${params}&_limit=6&_page=1`
-    );
-  });
+  const res = useInfiniteQuery(
+    ["players", param_club, param_position],
+    ({ pageParam = 1 }) => {
+      return axios.get(
+        `http://localhost:3001/players?${params}&_limit=5&_page=${pageParam}`
+      );
+    },
+    {
+      getNextPageParam: (lastPage, allPages) => {
+        const maxPages = 3;
+        const nextPage = allPages.length + 1;
+
+        return nextPage <= maxPages ? nextPage : undefined;
+      },
+    }
+  );
 
   return res;
 };

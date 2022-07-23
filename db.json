@@ -141,6 +141,18 @@
       "stadium_emblem": "stadium_image_2.jpeg",
       "transfer_budget": "€130M",
       "players": 33
+    },
+    {
+      "id": 12,
+      "name": "Borussia Dortmund",
+      "league": "Germany 1. Bundesliga (1)",
+      "league_id": 1,
+      "image": "club_emblem_2.webp",
+      "coach": "Edin Terzic",
+      "stadium": "Signal Iduna Park",
+      "stadium_emblem": "stadium_image_2.jpeg",
+      "transfer_budget": "€25M",
+      "players": 33
     }
   ],
   "players": [
@@ -353,6 +365,36 @@
       "country": "Poland",
       "image": "./images/players/faces/profile_1.webp",
       "short_number": 9
+    },
+    {
+      "id": 14,
+      "name": "Erling",
+      "surname": "Haaland",
+      "age": 20,
+      "date_of_birth": "21.07.2000",
+      "position": "Forward",
+      "position_id": 1,
+      "rating": 88,
+      "club": "Borussia Dortmund",
+      "club_id": 12,
+      "country": "Norway",
+      "image": "./images/players/faces/profile_1.webp",
+      "short_number": 9
+    },
+    {
+      "id": 15,
+      "name": "Mats",
+      "surname": "Hummels",
+      "age": 32,
+      "date_of_birth": "16.12.1988",
+      "position": "Defender",
+      "position_id": 3,
+      "rating": 84,
+      "club": "Borussia Dortmund",
+      "club_id": 12,
+      "country": "Germany",
+      "image": "./images/players/faces/profile_1.webp",
+      "short_number": 15
     }
   ],
   "positions": [
