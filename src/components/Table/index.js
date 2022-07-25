@@ -8,8 +8,7 @@ import {
   TableRow,
 } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
-import Avatar from "@mui/material/Avatar";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useFetchPlayers } from "../../hooks/hooks";
 import "./index.css";
@@ -45,7 +44,7 @@ const LOADING__TABLE = () => {
   );
 };
 
-const CustomTable = ({ queryParams, handleQueryParamsChange, tableRows }) => {
+const CustomTable = ({ queryParams, columns }) => {
   const { league, club, position } = queryParams;
 
   const { data, isLoading, fetchNextPage, hasNextPage } = useFetchPlayers(
@@ -70,6 +69,8 @@ const CustomTable = ({ queryParams, handleQueryParamsChange, tableRows }) => {
     };
   }, []);
 
+  const columnsValues = columns.map((column) => column.name);
+
   return (
     <div className="Table">
       {isLoading && <LOADING__TABLE />}
@@ -77,50 +78,55 @@ const CustomTable = ({ queryParams, handleQueryParamsChange, tableRows }) => {
         <Table sx={{ minWidth: 650 }}>
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Position</TableCell>
-              <TableCell>Club</TableCell>
+              {columns.map((column) => (
+                <TableCell key={column.id}>{column.name}</TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {data?.pages.map((group, index) => (
               <Fragment key={index}>
-                {group?.data?.map((item, index) => (
+                {group?.data?.map((item, i) => (
                   <TableRow
-                    key={item.id}
+                    key={i}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row">
-                      <div className="TableCell__name">
-                        <Avatar
-                          src={`../images/players/faces/${item.image}`}
-                          alt={item.name}
-                        />
-
+                    {columnsValues.includes("Name") && (
+                      <TableCell>
                         <Link
-                          className="TableCell__link Link__name"
+                          className="TableCell__link"
                           to={`/players/${item.id}`}
                         >
                           {item.name} {item.surname}
                         </Link>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <Link
-                        className="TableCell__link TableCell__link-position"
-                        to={`/players?position_id=${item.position_id}`}
-                      >
-                        {item.position}
-                      </Link>
-                    </TableCell>
-                    <TableCell>
-                      <Link
-                        className="TableCell__link"
-                        to={`/teams/${item.club_id}`}
-                      >
-                        {item.club}
-                      </Link>
-                    </TableCell>
+                      </TableCell>
+                    )}
+                    {columnsValues.includes("Position") && (
+                      <TableCell>
+                        <Link
+                          className="TableCell__link"
+                          to={`/players?position_id=${item.position_id}`}
+                        >
+                          {item.position}
+                        </Link>
+                      </TableCell>
+                    )}
+                    {columnsValues.includes("Club") && (
+                      <TableCell>
+                        <Link
+                          className="TableCell__link"
+                          to={`/teams/${item.club_id}`}
+                        >
+                          {item.club}
+                        </Link>
+                      </TableCell>
+                    )}
+                    {columnsValues.includes("Rating") && (
+                      <TableCell>{item.rating}</TableCell>
+                    )}
+                    {columnsValues.includes("Country") && (
+                      <TableCell>{item.country}</TableCell>
+                    )}
                   </TableRow>
                 ))}
               </Fragment>

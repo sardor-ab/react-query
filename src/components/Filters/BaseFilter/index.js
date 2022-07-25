@@ -2,7 +2,13 @@ import { InputLabel, MenuItem, Select } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import "./index.css";
 
-const BaseFilter = ({ label, data, value, handleValueChange }) => {
+const BaseFilter = ({
+  label,
+  data,
+  value,
+  handleValueChange,
+  multiple = false,
+}) => {
   const { isLoading, isError, data: receivedData, error } = data;
 
   let values = [
@@ -16,6 +22,12 @@ const BaseFilter = ({ label, data, value, handleValueChange }) => {
     values.push(item);
   });
 
+  if (label === "SELECTED COLUMNS") {
+    data.map((item) => {
+      values.push(item);
+    });
+  }
+
   return (
     <div className="Filter">
       <InputLabel>{label}</InputLabel>
@@ -24,6 +36,7 @@ const BaseFilter = ({ label, data, value, handleValueChange }) => {
         label={label}
         onChange={handleValueChange}
         variant="standard"
+        multiple={multiple}
       >
         {isLoading && <LinearProgress />}
         {isError && <div>{error.message}</div>}

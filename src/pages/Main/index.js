@@ -18,12 +18,12 @@ const PLAYERS_DATA = {
       search_param: "teams",
     },
   ],
-  tableRows: [
-    { title: "Age" },
-    { title: "Club" },
-    { title: "Position" },
-    { title: "Rating" },
-    { title: "Wage" },
+  columns: [
+    { id: 1, name: "Name" },
+    { id: 2, name: "Position" },
+    { id: 3, name: "Club" },
+    { id: 4, name: "Rating" },
+    { id: 5, name: "Country" },
   ],
 };
 

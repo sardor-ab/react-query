@@ -1,12 +1,14 @@
 .Filters {
   display: flex;
-  border: 1px solid #0000001f;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 15%);
   padding: 10px;
   border-radius: 4px;
+  flex-direction: row;
 }
 
 .Filters__left {
   display: flex;
+  flex-direction: row;
   width: 70%;
 }
 
@@ -16,18 +18,28 @@
   flex-flow: row-reverse;
 }
 
-.Laptop__down {
-  display: none;
+.MuiDialogTitle-root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MuiDialogTitle-root > svg {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1023px) {
-  .Laptop__up {
-    display: none;
+  .Filters,
+  .Filters__left,
+  .Filters__right {
+    flex-direction: column;
   }
 
-  .Laptop__down {
-    display: block;
-    color: #37003c;
-    font-weight: 400;
+  .Filters__left {
+    width: 100%;
+  }
+
+  .Filters__right {
+    width: 100%;
   }
 }

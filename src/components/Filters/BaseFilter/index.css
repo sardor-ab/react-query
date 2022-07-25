@@ -16,3 +16,10 @@
   font-weight: bold;
   color: #37003c;
 }
+
+@media screen and (max-width: 1023px) {
+  .Filter {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

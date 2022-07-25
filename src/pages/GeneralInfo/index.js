@@ -4,25 +4,35 @@ import SearchBar from "../../components/SearchBar";
 import FilterComponent from "../../components/Filters";
 import "./index.css";
 
+const DEFAULT_QUERY_PARAMS = {
+  league: 0,
+  club: 0,
+  position: 0,
+};
+
 const GeneralInfo = ({ props }) => {
-  const { dataName, buttonData, tableRows } = props;
-  const [queryParams, setQueryParams] = useState({
-    league: 0,
-    club: 0,
-    position: 0,
-  });
+  let preSelectedColumns = [];
+
+  const { dataName, buttonData, columns } = props;
+  const [queryParams, setQueryParams] = useState(DEFAULT_QUERY_PARAMS);
 
   const handleQueryParamsChange = (queryParamName, queryParamValue) => {
     setQueryParams({ ...queryParams, [queryParamName]: queryParamValue });
   };
 
   const handleReset = () => {
-    setQueryParams({
-      league: 0,
-      club: 0,
-      position: 0,
-    });
+    setQueryParams(DEFAULT_QUERY_PARAMS);
   };
+
+  if (localStorage.getItem(dataName)) {
+    console.log("first");
+    preSelectedColumns = JSON.parse(localStorage.getItem(dataName));
+  } else {
+    console.log("second");
+    localStorage.setItem(dataName, JSON.stringify(columns));
+  }
+
+  console.log("preSelectedColumns: ", preSelectedColumns);
 
   return (
     <div className="GeneralInfo">
@@ -46,11 +56,15 @@ const GeneralInfo = ({ props }) => {
           queryParams={queryParams}
           handleQueryParamsChange={handleQueryParamsChange}
           handleReset={handleReset}
+          columns={columns}
+          preSelectedColumns={preSelectedColumns}
+          dataName={dataName}
         />
         <CustomTable
           queryParams={queryParams}
-          tableRows={tableRows}
+          columns={columns}
           handleQueryParamsChange={handleQueryParamsChange}
+          preSelectedColumns={preSelectedColumns}
         />
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Divider } from "@mui/material";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import BaseFilter from "./BaseFilter";
@@ -13,7 +13,18 @@ const FilterComponent = ({
   queryParams,
   handleQueryParamsChange,
   handleReset,
+  columns,
+  preSelectedColumns,
+  dataName,
 }) => {
+  let preSelectedColumnsID = columns.map(
+    (preSelectedColumn) => preSelectedColumn.id
+  );
+
+  console.log("Filters: ", preSelectedColumns);
+
+  const [selectedColumns, setSelectedColumns] = useState(preSelectedColumnsID);
+
   const { league, club, position } = queryParams;
 
   const leaguesData = useFetchLeaguesData();
@@ -23,6 +34,11 @@ const FilterComponent = ({
   useEffect(() => {
     handleQueryParamsChange("club", 0);
   }, [league]);
+
+  useEffect(() => {
+    localStorage.setItem(dataName, JSON.stringify(selectedColumns));
+    console.log("localStorage: ", localStorage.getItem(dataName));
+  }, [selectedColumns, dataName]);
 
   const handleLeagueChange = (event) => {
     handleQueryParamsChange("league", event.target.value);
@@ -36,9 +52,16 @@ const FilterComponent = ({
     handleQueryParamsChange("position", event.target.value);
   };
 
+  const handleColumnChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setSelectedColumns(typeof value === "string" ? value.split(",") : value);
+  };
+
   return (
     <div className="Filters">
-      <div className="Filters__left Laptop__up">
+      <div className="Filters__left">
         <BaseFilter
           label={"FILTER BY LEAGUES"}
           value={league}
@@ -59,8 +82,16 @@ const FilterComponent = ({
           data={positionsData}
           handleValueChange={handlePositionChange}
         />
+        <Divider orientation="vertical" flexItem />
+        <BaseFilter
+          label={"SELECTED COLUMNS"}
+          value={selectedColumns}
+          data={columns}
+          handleValueChange={handleColumnChange}
+          multiple={true}
+        />
       </div>
-      <div className="Filters__right Laptop__up">
+      <div className="Filters__right">
         <Button
           variant="standard"
           color="primary"
@@ -71,7 +102,6 @@ const FilterComponent = ({
           RESET FILTERS
         </Button>
       </div>
-      <div className="Filters__content Laptop__down">Filters</div>
     </div>
   );
 };
