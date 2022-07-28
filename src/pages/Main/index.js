@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "../../components/Header";
 import GeneralInfo from "../GeneralInfo";
 import "./index.css";
-
-// { dataName, buttonData, filterData, tableRows }
 
 const PLAYERS_DATA = {
   dataName: "player",
@@ -12,42 +10,53 @@ const PLAYERS_DATA = {
     label: "New Player",
     action: () => {},
   },
-  filterData: [
-    {
-      title: "FILTER BY CLUB",
-      search_param: "teams",
-    },
-  ],
   columns: [
-    { id: 1, name: "Name" },
-    { id: 2, name: "Position" },
-    { id: 3, name: "Club" },
-    { id: 4, name: "Rating" },
-    { id: 5, name: "Country" },
+    { id: 1, name: "Club" },
+    { id: 2, name: "Rating" },
+    { id: 3, name: "Country" },
   ],
 };
 
 const MainPage = () => {
   const [theme, setTheme] = useState("light");
-  const setContentClassName = (theme) => {
-    return `MainPage__content ${theme}`;
-  };
+
+  useEffect(() => {
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (event) => {
+        const colorScheme = event.matches ? "dark" : "light";
+        setTheme(colorScheme);
+      });
+  }, []);
+
   return (
     <div className="MainPage">
       <div className="MainPage__header">
         <Header theme={theme} setTheme={setTheme} />
       </div>
-      <div className={setContentClassName(theme)}>
+      <div className="MainPage__content">
         <Routes>
           <Route
             exact
             path="/"
-            element={<GeneralInfo props={PLAYERS_DATA} />}
+            element={
+              <GeneralInfo
+                dataName={PLAYERS_DATA.dataName}
+                buttonData={PLAYERS_DATA.buttonData}
+                columns={PLAYERS_DATA.columns}
+              />
+            }
           />
           <Route
             exact
             path="/players"
-            element={<GeneralInfo props={PLAYERS_DATA} />}
+            element={
+              <GeneralInfo
+                dataName={PLAYERS_DATA.dataName}
+                buttonData={PLAYERS_DATA.buttonData}
+                columns={PLAYERS_DATA.columns}
+              />
+            }
           />
         </Routes>
       </div>

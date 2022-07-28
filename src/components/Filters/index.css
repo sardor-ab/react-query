@@ -43,3 +43,14 @@
     width: 100%;
   }
 }
+
+/* THEMING */
+@media (prefers-color-scheme: dark) {
+  .Filters {
+    background-color: #37003c;
+  }
+
+  .Filters__right > .MuiButton-root {
+    color: #fff;
+  }
+}

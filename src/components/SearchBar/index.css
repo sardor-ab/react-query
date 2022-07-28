@@ -17,3 +17,11 @@
     margin: 60px 0;
   }
 }
+
+/* THEMING */
+@media (prefers-color-scheme: dark) {
+  #outlined-basic {
+    border: 1px solid #fff;
+    color: #ababad;
+  }
+}

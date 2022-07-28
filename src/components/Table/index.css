@@ -21,3 +21,10 @@
   padding: 16px;
   border: 1px solid #0000001f;
 }
+
+@media (prefers-color-scheme: dark) {
+  .Table__extra {
+    background-color: #ff2882;
+    color: #fff;
+  }
+}

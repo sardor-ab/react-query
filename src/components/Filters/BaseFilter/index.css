@@ -23,3 +23,17 @@
     margin: 10px 0;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .Filter > .MuiInputLabel-root {
+    color: #ababad;
+  }
+
+  .Filter > .MuiInputBase-root {
+    color: #fff;
+  }
+
+  .Filter > .MuiInput-root > .MuiSvgIcon-root {
+    color: #fff;
+  }
+}

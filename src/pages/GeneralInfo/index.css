@@ -69,3 +69,14 @@
     margin-left: 0 !important;
   }
 }
+
+/* THEMING */
+@media (prefers-color-scheme: dark) {
+  .GeneralInfo__header {
+    background-color: #250428;
+  }
+
+  .GeneralInfo__header-title {
+    color: #fff;
+  }
+}

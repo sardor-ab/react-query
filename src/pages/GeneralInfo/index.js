@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CustomTable from "../../components/Table";
 import SearchBar from "../../components/SearchBar";
 import FilterComponent from "../../components/Filters";
@@ -10,11 +10,9 @@ const DEFAULT_QUERY_PARAMS = {
   position: 0,
 };
 
-const GeneralInfo = ({ props }) => {
-  let preSelectedColumns = [];
-
-  const { dataName, buttonData, columns } = props;
+const GeneralInfo = ({ dataName, buttonData, columns }) => {
   const [queryParams, setQueryParams] = useState(DEFAULT_QUERY_PARAMS);
+  const [preSelectedColumns, setPreSelectedColumns] = useState(columns);
 
   const handleQueryParamsChange = (queryParamName, queryParamValue) => {
     setQueryParams({ ...queryParams, [queryParamName]: queryParamValue });
@@ -24,15 +22,11 @@ const GeneralInfo = ({ props }) => {
     setQueryParams(DEFAULT_QUERY_PARAMS);
   };
 
-  if (localStorage.getItem(dataName)) {
-    console.log("first");
-    preSelectedColumns = JSON.parse(localStorage.getItem(dataName));
-  } else {
-    console.log("second");
-    localStorage.setItem(dataName, JSON.stringify(columns));
-  }
-
-  console.log("preSelectedColumns: ", preSelectedColumns);
+  useEffect(() => {
+    if (localStorage.getItem(dataName)) {
+      setPreSelectedColumns(JSON.parse(localStorage.getItem(dataName)));
+    }
+  }, [dataName]);
 
   return (
     <div className="GeneralInfo">
