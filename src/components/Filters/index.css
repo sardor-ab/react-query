@@ -1,0 +1,56 @@
+.Filters {
+  display: flex;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 15%);
+  padding: 10px;
+  border-radius: 4px;
+  flex-direction: row;
+}
+
+.Filters__left {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+
+.Filters__right {
+  width: 30%;
+  display: flex;
+  flex-flow: row-reverse;
+}
+
+.MuiDialogTitle-root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MuiDialogTitle-root > svg {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+  .Filters,
+  .Filters__left,
+  .Filters__right {
+    flex-direction: column;
+  }
+
+  .Filters__left {
+    width: 100%;
+  }
+
+  .Filters__right {
+    width: 100%;
+  }
+}
+
+/* THEMING */
+@media (prefers-color-scheme: dark) {
+  .Filters {
+    background-color: #37003c;
+  }
+
+  .Filters__right > .MuiButton-root {
+    color: #fff;
+  }
+}

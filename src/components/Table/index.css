@@ -1,0 +1,30 @@
+.Table {
+  padding: 60px 0;
+  /* max-height: 250px; */
+  /* padding: 10px; */
+  /* border: 1px solid #0000001f; */
+}
+
+.TableCell__link {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #242424;
+  text-decoration: none;
+}
+
+.TableCell__link:hover {
+  text-decoration: underline;
+}
+
+.Table__extra {
+  margin-top: 30px;
+  padding: 16px;
+  border: 1px solid #0000001f;
+}
+
+@media (prefers-color-scheme: dark) {
+  .Table__extra {
+    background-color: #ff2882;
+    color: #fff;
+  }
+}
